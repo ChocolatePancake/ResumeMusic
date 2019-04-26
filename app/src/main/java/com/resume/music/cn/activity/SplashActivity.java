@@ -37,10 +37,8 @@ public class SplashActivity extends BaseTitleActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         if (!StatusBarUtil.isSupportStatusBarFontChange()) {
-            //隐藏状态栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-//        CacheData.requestFutureAll(); //缓存必要数据(期货分类所有数据)
         jumpSwitch();
     }
 
@@ -62,7 +60,7 @@ public class SplashActivity extends BaseTitleActivity {
 
             @Override
             public void showExpired() {
-
+                showNetError();
             }
         });
     }

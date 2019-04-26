@@ -50,7 +50,7 @@ public class ChannelManager {
     private static void initCheckVersion() {
         AVObject t_check_version = new AVObject(TABLE_SWITCH);
         t_check_version.put(SWITCH_CHANNEL, "appSwitch");
-        t_check_version.put(SWITCH_NEED_SWITCH, "0");
+        t_check_version.put(SWITCH_NEED_SWITCH, 0);
         t_check_version.saveInBackground();
     }
 
