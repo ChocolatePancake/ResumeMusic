@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- 此处的颜色我也不知道那里会用,暂时不管,起 -->
+    <color name="colorItems">#ffffff</color>
+
+    <color name="colorTitle">#FFFFFF</color>
+    <color name="colorTextBlack">#333333</color>
+    <color name="colorTextBlackLight">#636363</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhitePressed">#e8e8e8</color>
+
+    <!--多状态文本颜色控制-->
+    <color name="status_layout_click_view_text_color">#0084FF</color>
+    <color name="status_layout_tip_text_color">#666666</color>
+<!-- 此处的颜色我也不知道那里会用,暂时不管,止 -->
+
+
+
+    <!-- *默认白色主题* -->
+    <!-- *默认白色主题* -->
+    <!-- *默认白色主题* -->
+<!-- 1.默认白色主题 -->
+    <color name="colorPrimary">#D6AA65</color>
+    <color name="colorPrimaryDark">#D6AA65</color>
+    <color name="colorAccent">#D6AA65</color>
+    <color name="colorBackground">#f2f2f2</color>
+    <!-- 边框颜色 -->
+    <color name="colorLine">#ababab</color>
+
+
+<!--  2.toolbar相关的颜色配置,开始 -->
+    <!--TitleBarView背景色-->
+    <color name="colorTitleBackground">@color/colorPrimary</color>
+    <!--TitleBarView 文字颜色-->
+    <color name="colorTitleText">#222222</color>
+    <!--TitleBarView 下划线颜色-->
+    <color name="colorTitleDivider">#DCDCDC</color>
+    <!--  toolbar相关的颜色配置,结束 -->
+
+
+<!--  3.TAB 配置开始 -->
+    <!--主页tab背景色-->
+    <color name="colorTabBackground">#efefef</color>
+    <!--主页上划线颜色-->
+    <color name="colorTabUnderline">#d6d6d6</color>
+    <!--主页tab文字默认颜色-->
+    <color name="colorTabTextUnSelect">#9B9B9B</color>
+    <!--主页tab文字选中颜色-->
+    <color name="colorTabTextSelect">@color/colorAccent</color>
+<!--  TAB 配置结束 -->
+
+
+<!--4.Glide加载图片默认占位图背景色-->
+    <color name="colorPlaceholder">#CCCCCC</color>
+
+
+<!-- 5.刷新、加载的字体颜色,开始 -->
+    <!--LoadMoreView 文本颜色-->
+    <color name="colorLoadMoreText">@color/text_content</color>
+    <!--LoadMoreView loading颜色-->
+    <color name="colorLoadMoreProgress">@color/colorTitleText</color>
+<!-- 刷新\加载的字体颜色,结束 -->
+
+
+<!-- 6.Activity滑动返回背景-->
+    <color name="colorSwipeBackBackground">#3b3b3b</color>
+
+<!-- 7.内容颜色,开始,很重要: 以后所有的字体颜色都需要冲这里取-->
+    <color name="text_title">#222222</color>
+    <color name="text_content">#686868</color>
+    <color name="text_tip">#898989</color>
+    <color name="text_hint">#ababab</color>
+
+<!-- 7.内容颜色,结束,很重要: 以后所有的字体颜色都需要冲这里取-->
+
+    <color name="transparent">#00000000</color>
+
+    <color name="green">#1BCB3D</color>
+    <color name="red">#EA3131</color>
+</resources>

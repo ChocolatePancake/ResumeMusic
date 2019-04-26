@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".fragment.NewsCalendarFragment"
+    tools:ignore="ResourceName">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp_56"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/calendar_news_money_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_17"
+                android:layout_height="@dimen/dp_17"
+                android:src="@drawable/zixun_icon_calendar" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/dp_1"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray" />
+
+
+        <com.haibin.calendarview.CalendarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:calendar_content_view_id="@+id/recyclerView"
+            app:calendar_show_mode="only_week_view"
+            app:default_status="shrink">
+
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendar_news_calendar_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                app:calendar_height="@dimen/dp_21"
+                app:day_text_size="@dimen/sp_12"
+                app:lunar_text_size="@dimen/dp_0"
+                app:scheme_theme_color="@null"
+                app:select_mode="single_mode"
+                app:selected_text_color="#FFE85660"
+                app:selected_theme_color="#ffffff"
+                app:week_bar_height="@dimen/dp_17"
+                app:week_view_scrollable="true" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sp_17"
+                android:background="#ffffff" />
+
+        </com.haibin.calendarview.CalendarLayout>
+    </LinearLayout>
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/news_calendar_smart_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/news_calendar_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:id="@+id/simple_title_bar_back_view"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/bar_back_img"
+            android:layout_width="8dp"
+            android:layout_height="14dp" />
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/bar_title_tx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:padding="0dp"
+        android:textSize="18sp" />
+
+    <FrameLayout
+        android:id="@+id/simple_title_bar_go_view"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/bar_go_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/bar_go_tx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,70 @@
+<resources>
+
+    <style name="LoginInputLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingRight">@dimen/dp_52</item>
+        <item name="android:paddingLeft">@dimen/dp_52</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="LoginInputViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:background">@drawable/login_bg_edit_text</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:paddingRight">@dimen/dp_10</item>
+    </style>
+
+    <style name="LoginEditPromptTextStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_width">@dimen/dp_72</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_title</item>
+        <item name="android:textSize">@dimen/sp_13</item>
+    </style>
+
+    <style name="LoginEditTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/text_content</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:background">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+    </style>
+
+    <style name="LoginToggleButtonStyle">
+        <item name="android:layout_width">@dimen/dp_20</item>
+        <item name="android:layout_height">@dimen/dp_20</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/login_pwd_show_toggle</item>
+        <item name="android:textOff">""</item>
+        <item name="android:textOn">""</item>
+    </style>
+
+    <style name="LoginTimerViewStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_width">@dimen/dp_72</item>
+        <item name="android:layout_height">@dimen/dp_24</item>
+        <item name="android:background">@drawable/login_bg_timer_view</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FF7B47F2</item>
+        <item name="android:textSize">@dimen/sp_11</item>
+        <item name="android:text">获取验证码</item>
+    </style>
+
+    <style name="LoginSubmitButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:background">@drawable/login_bg_content_default_round_5</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+</resources>

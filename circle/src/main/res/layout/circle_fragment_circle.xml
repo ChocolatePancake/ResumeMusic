@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp_20"
+                android:paddingBottom="@dimen/dp_20"
+                android:text="关注大咖,跟牛人,擒牛股"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/dp_18" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_commit"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="@dimen/dp_40"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/common_margin"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="一键关注"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_16"
+                android:visibility="gone" />
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/smartLayout_rootFastLib"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="6dp">
+
+                <android.support.v7.widget.RecyclerView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/rv_contentFastLib"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

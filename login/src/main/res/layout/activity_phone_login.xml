@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.PhoneLoginActivity"
+    tools:ignore="ResourceName">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <LinearLayout
+        style="@style/LoginInputLayoutStyle"
+        android:paddingTop="@dimen/dp_164">
+
+        <LinearLayout style="@style/LoginInputViewStyle">
+
+            <TextView
+                style="@style/LoginEditPromptTextStyle"
+                android:text="手机号：" />
+
+            <EditText
+                android:id="@+id/et_phone_number"
+                style="@style/LoginEditTextStyle"
+                android:hint="请输入手机号码"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LoginInputViewStyle"
+            android:layout_marginTop="@dimen/dp_20">
+
+            <TextView
+                style="@style/LoginEditPromptTextStyle"
+                android:text="验证码：" />
+
+            <EditText
+                android:id="@+id/et_sms_code"
+                style="@style/LoginEditTextStyle"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:maxLength="6" />
+
+            <cn.control.c.com.ccontrol.TimerView
+                android:id="@+id/sms_timer_view"
+                style="@style/LoginTimerViewStyle"
+                app:endText="再次获取"
+                app:time="60" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/LoginSubmitButtonStyle"
+            android:layout_marginTop="@dimen/dp_50"
+            android:text="登录" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_registered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dp_26"
+            android:text="注册账号"
+            android:textColor="#4d77ff"
+            android:textSize="@dimen/sp_15" />
+
+    </LinearLayout>
+
+</LinearLayout>

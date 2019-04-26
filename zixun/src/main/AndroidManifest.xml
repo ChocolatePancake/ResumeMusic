@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yyjj.zixun">
+
+    <application>
+        <activity android:name=".activity.ArticleDetailActivity">
+        </activity>
+        <activity android:name=".activity.ArticleHotActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.VideoActivity" />
+        <activity
+            android:name=".activity.PlayVideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+    </application>
+
+</manifest>

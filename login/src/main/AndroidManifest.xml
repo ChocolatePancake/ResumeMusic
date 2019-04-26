@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.leancloud.login">
+
+    <application>
+        <activity android:name=".activity.PasswordFindActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.PasswordChangeActivity" />
+        <activity android:name=".activity.PersonalActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.PhoneLoginActivity"></activity>
+    </application>
+
+</manifest>

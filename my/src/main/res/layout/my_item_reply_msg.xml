@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_reply_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:background="#fff"
+        android:padding="@dimen/dp_3"
+        android:text="18:00" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/iv_replyer"
+            android:layout_width="@dimen/dp_45"
+            android:layout_height="@dimen/dp_45"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:src="@mipmap/ic_default_head" />
+
+        <TextView
+            android:id="@+id/tv_reply_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_6"
+            android:layout_toRightOf="@id/iv_replyer"
+            android:background="@color/colorWhite"
+            android:maxWidth="@dimen/dp_200"
+            android:padding="@dimen/dp_10"
+            android:text="我不,我不,我就不........."
+            android:textColor="@color/text_title"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</LinearLayout>

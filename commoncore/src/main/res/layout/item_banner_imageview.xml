@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tech.com.commoncore.widget.RoundImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_208"
+    android:layout_height="@dimen/dp_102"
+    android:id="@+id/imageview"
+    >
+</tech.com.commoncore.widget.RoundImageView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/common_margin">
+
+    <EditText
+        android:id="@+id/dialog_name_input_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:gravity="start"
+        android:hint="输入新的昵称"
+        android:lines="1"
+        android:padding="@dimen/dp_5"
+        android:textColor="@color/text_hint"
+        android:textSize="@dimen/sp_14" />
+
+</LinearLayout>

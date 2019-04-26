@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion compile_sdk_version.toInteger()
+    defaultConfig {
+        applicationId "com.resume.music.cn"
+        minSdkVersion min_sdk_version.toInteger()
+        targetSdkVersion target_sdt_version.toInteger()
+        versionCode 100
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        flavorDimensions "versionCode"
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
+    //程序在buid的时候，会执行lint检查，有任何的错误或者警告提示，都会终止构建，可以将其关掉
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+    signingConfigs {
+        config {
+            keyAlias 'key.store'
+            keyPassword 'yingju'
+            storeFile file('../yingju.jks')
+            storePassword 'yingju'
+        }
+    }
+    buildTypes {
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            versionNameSuffix ""
+            //混淆 true
+            minifyEnabled false
+            //zipalign 优化
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            versionNameSuffix ""
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
+        yyb {}//应用宝
+        hw {}//华为
+        qh360 {}//360
+        oppo {}//oppo
+        mi {}
+        mz {}
+        lx {}
+        sg {}
+        vivo {}
+        yyh {}
+        jl {}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+    }
+
+    // 自定义APK输出配置
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = "resumemusic.apk"
+                outputFileName = fileName
+            }
+        }
+    }
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "com.android.support:design:$support_version"
+    implementation "com.android.support:recyclerview-v7:$support_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    implementation 'com.github.open-android:JieCaoVideoPlayer:0.1.0'
+
+    implementation project(':commoncore')
+    //以下是加载的模块
+    runtimeOnly project(':login')
+    runtimeOnly project(':home')
+    runtimeOnly project(':circle')
+    runtimeOnly project(':my')
+    runtimeOnly project(':zixun')
+}

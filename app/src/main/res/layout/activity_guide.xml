@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zsr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
+        android:id="@+id/splash_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        zsr:zoom_alpha_min="0.4"
+        zsr:zoom_dismiss_open="true"
+        zsr:zoom_leftmargin="10dp"
+        zsr:zoom_max="1.5"
+        zsr:zoom_selector="@drawable/bg_bottom_circle" />
+
+    <com.zhengsr.viewpagerlib.view.GlideViewPager
+        android:id="@+id/glide_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/splash_start_btn"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_38"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:background="@drawable/bg_content_default_round"
+        android:text="立即体验"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+</FrameLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/circle_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.FindFragment"
+    tools:ignore="ResourceName">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_weight="1"
+        android:background="@drawable/circle_bg_find_fragment_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.flyco.tablayout.SegmentTabLayout
+            android:id="@+id/circle_find_tab_layout"
+            android:layout_width="@dimen/dp_140"
+            android:layout_height="@dimen/dp_33"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            app:tl_bar_color="@android:color/white"
+            app:tl_bar_stroke_color="#FFAB87FD"
+            app:tl_indicator_color="#FFAB87FD"
+            app:tl_indicator_corner_radius="@dimen/dp_5" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@android:color/darker_gray" />
+
+        <FrameLayout
+            android:id="@+id/circle_find_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/circle_find_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_weight="1"
+            android:background="@drawable/circle_bg_content_white_round_5"
+            android:maxLength="200"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_6"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_6"
+            android:singleLine="true"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/sp_13" />
+
+        <com.aries.ui.view.radius.RadiusTextView
+            android:id="@+id/tv_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_5"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15"
+            app:rv_backgroundColor="#FFAB87FD"
+            app:rv_radius="@dimen/dp_5" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".activity.OnLineServiceActivity">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/page_gray_cc" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_weight="1"
+            android:background="@drawable/my_bg_content_white_round_5"
+            android:maxLength="200"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_6"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_6"
+            android:singleLine="true"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/sp_13" />
+
+        <com.aries.ui.view.radius.RadiusTextView
+            android:id="@+id/tv_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_5"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15"
+            app:rv_backgroundColor="#FFAB87FD"
+            app:rv_radius="@dimen/dp_5" />
+
+    </LinearLayout>
+</LinearLayout>

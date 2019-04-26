@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/page_white"
+                android:padding="@dimen/common_margin">
+
+                <tech.com.commoncore.widget.MyCircleImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="@dimen/dp_60"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginRight="@dimen/common_margin"
+                    android:src="@mipmap/ic_default_head" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:layout_toLeftOf="@+id/tv_focus"
+                    android:layout_toRightOf="@+id/iv_icon"
+                    android:textColor="@color/text_title"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:id="@+id/tv_fans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_toRightOf="@+id/iv_icon"
+                    android:textColor="@color/text_content"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/tv_focus"
+                    android:layout_width="@dimen/dp_55"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/circle_selector_bg"
+                    android:gravity="center"
+                    android:text="+关注"
+                    android:textColor="@drawable/circle_selector_textcolor"
+                    android:textSize="@dimen/sp_13" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/page_white"
+                android:ellipsize="end"
+                android:maxLines="9"
+                android:padding="@dimen/common_margin"
+                android:textColor="@color/text_content"
+                android:textSize="@dimen/sp_14" />
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/smartLayout_rootFastLib"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <android.support.v7.widget.RecyclerView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/rv_contentFastLib"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

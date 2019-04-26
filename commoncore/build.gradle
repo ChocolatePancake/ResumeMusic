@@ -1,0 +1,146 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion compile_sdk_version.toInteger()
+
+
+    defaultConfig {
+        minSdkVersion min_sdk_version.toInteger()
+        targetSdkVersion compile_sdk_version.toInteger()
+
+        versionCode 100
+        versionName "1.0.0"
+
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+        lintOptions {
+            abortOnError false
+            checkReleaseBuilds false
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+
+    packagingOptions {
+        doNotStrip '*/mips/*.so'
+        doNotStrip '*/mips64/*.so'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api "com.android.support:design:$support_version"
+    api "com.android.support:recyclerview-v7:$support_version"
+    api "com.android.support:appcompat-v7:$support_version"
+    api 'com.vise.xiaoyaoyou:xsnow:2.1.9'
+    api 'com.jakewharton:butterknife:8.5.1'
+    api 'com.github.AriesHoo.UIWidget:widget-core:3.2.6'
+
+    //万能适配器
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+
+    //下拉刷新库
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+
+    //下拉刷新库注意刷新头SmartRefreshHeader版本最好对应尤其头版本不要低于SmartRefreshLayout版本
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+
+    //多状态视图切换
+    api 'com.github.Bakumon:StatusLayoutManager:1.0.4'
+
+    //快速Tab库
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    //日志打印
+    api 'com.orhanobut:logger:2.2.0'
+
+    //滑动返回Activity
+    api 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'
+
+    //图片加载
+    api 'com.github.bumptech.glide:glide:4.5.0'
+
+    //retrofit+rxjava 网络请求及数据解析相关
+    api 'io.reactivex.rxjava2:rxjava:2.1.16'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    //处理rxjava内存泄漏-生命周期绑定
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+
+    //webview加载框架
+    api 'com.tencent.sonic:sdk:3.0.0'
+    api 'org.jsoup:jsoup:1.11.2'
+
+    //九宫格图片
+    api 'cn.bingoogolapple:bga-photopicker:1.2.8@aar'
+    api 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'
+
+    //dialog
+    api 'com.github.AriesHoo.UIWidget:widget-alert:3.2.6'
+
+    //populwindow
+    api 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
+
+    //item 侧滑删除,添加等等
+    api 'com.daimajia.swipelayout:library:1.2.0@aar'
+
+    //日历
+    api 'com.haibin:calendarview:3.4.8'
+
+    //文字展开收缩
+    api 'com.ms-square:expandableTextView:0.1.4'
+
+    // LeanCloud 基础包
+    api 'cn.leancloud.android:avoscloud-sdk:v4.7.3'
+    api 'com.android.support:multidex:1.0.3'
+
+    //运行时权限框架
+    api 'pub.devrel:easypermissions:1.2.0'
+
+    //viewpager 轮播库,用于启动页.轮播.tab指示器.
+    api 'com.github.LillteZheng:ViewPagerHelper:v0.9'
+
+    //状态栏工具
+    api 'com.gyf.immersionbar:immersionbar:2.3.2-beta01'
+
+    //极光推送 , 默认关闭使用 友盟整套(推送\统计\分享)
+
+    //    api 'cn.jiguang.sdk:jpush:3.1.6' //推送用极光
+
+    //    api 'cn.jiguang.sdk:jcore:1.2.6'
+    api project(':UMLibrary')
+
+    api 'com.alibaba:arouter-api:1.4.1'
+    // arouter-compiler 的注解依赖需要所有使用 ARouter 的 model 都添加依赖
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
+    api project(':ccontrol')
+
+    api 'com.github.VinsonGuo:android-kline:2.0.0-alpha'
+}

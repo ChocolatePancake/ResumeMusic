@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.leancloud.circle">
+
+    <application>
+        <activity android:name=".activity.AuthorDetailActivity" />
+        <activity android:name=".activity.PublishCircleActivity" />
+        <activity android:name=".activity.MyLikeActivity" />
+        <activity android:name=".activity.MyCollectionActivity" />
+        <activity android:name=".activity.CircleDetailsActivity"></activity>
+    </application>
+
+</manifest>

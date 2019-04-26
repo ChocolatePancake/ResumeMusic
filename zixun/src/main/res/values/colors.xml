@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="zixun_color_importance_1">#FF6BD690</color>
+    <color name="zixun_color_importance_2">#FFEFB336</color>
+    <color name="zixun_color_importance_3">#FFDB229B</color>
+    <color name="zixun_color_importance_4">#FFE85660</color>
+    <color name="zixun_color_importance_5">@android:color/holo_red_dark</color>
+</resources>

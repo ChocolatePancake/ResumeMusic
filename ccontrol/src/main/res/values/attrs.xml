@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FunctionOption">
+        <attr name="leftIcon" format="reference" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="message" format="string" />
+        <attr name="gongLeftIcon" format="boolean" />
+        <attr name="remarks" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="PTitleBar">
+        <attr name="backIcon" format="reference" />
+        <attr name="titleText" format="string" />
+        <attr name="goType" format="integer">
+            <flag name="text" value="0" />
+            <flag name="icon" value="1" />
+        </attr>
+        <attr name="goText" format="string" />
+        <attr name="goIcon" format="reference" />
+        <attr name="titleColor" format="color" />
+        <attr name="goTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="TimerView">
+        <attr name="time" format="integer" />
+        <attr name="endText" format="string" />
+    </declare-styleable>
+</resources>

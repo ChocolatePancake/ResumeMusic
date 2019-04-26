@@ -1,0 +1,10 @@
+<!--评论小图标-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="12dp"
+    android:height="12dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:fillColor="#8a8a8a"
+        android:pathData="M900.3,93.9L123.7,93.9c-33,0 -59.7,26.7 -59.7,59.7v537.6c0,33 26.7,59.7 59.7,59.7h59.7v179.2l268.8,-179.2h448c33,0 59.7,-26.7 59.7,-59.7L959.9,153.6c0.1,-33 -26.6,-59.7 -59.6,-59.7zM900.3,661.3c0,16.5 -13.4,29.9 -29.9,29.9h-448L243.2,810.7L243.2,691.2h-89.6c-16.5,0 -29.9,-13.4 -29.9,-29.9L123.7,183.5c0,-16.5 13.4,-29.9 29.9,-29.9h716.8c16.5,0 29.9,13.4 29.9,29.9v477.8z" />
+</vector>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yyjj.my">
+
+    <application>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.FeedBackActivity" />
+        <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.PersonalSettingActivity" />
+        <activity android:name=".activity.OnLineServiceActivity" />
+        <activity android:name=".activity.SettingsActivity" />
+        <activity android:name=".activity.NotificationActivity" />
+        <activity android:name=".activity.SingeInputActivity"></activity>
+    </application>
+
+</manifest>

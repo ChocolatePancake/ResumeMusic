@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.NotificationActivity"
+    tools:ignore="ResourceName">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/no_data_value"
+            android:layout_width="@dimen/dp_190"
+            android:layout_height="@dimen/dp_140"
+            android:layout_gravity="center"
+            android:background="@mipmap/icon_no_massage_data"
+            android:gravity="center_horizontal|bottom"
+            android:paddingBottom="@dimen/dp_16"
+            android:text="您还没有收到消息哦～"
+            android:textColor="#FF999999" />
+
+    </LinearLayout>
+
+</LinearLayout>

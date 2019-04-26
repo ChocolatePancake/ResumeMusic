@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="ResourceName">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_head"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_195">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="@dimen/dp_68"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_default_head" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_head"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:background="@color/colorItems"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin"
+            android:paddingRight="@dimen/common_margin">
+
+            <TextView
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:text="昵称"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/sp_14" />
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:singleLine="true"
+                android:textColor="@color/text_tip"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:background="@color/colorItems"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin"
+            android:paddingRight="@dimen/common_margin">
+
+            <TextView
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:text="性別"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/sp_14" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radiobtn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="男"
+                    android:textColor="@color/text_tip"
+                    android:textSize="@dimen/sp_12" />
+
+                <RadioButton
+                    android:id="@+id/radiobtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="女"
+                    android:textColor="@color/text_tip"
+                    android:textSize="@dimen/sp_12" />
+
+                <RadioButton
+                    android:id="@+id/radiobtn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保密"
+                    android:textColor="@color/text_tip"
+                    android:textSize="@dimen/sp_12" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:background="@color/colorItems"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_margin"
+            android:paddingRight="@dimen/common_margin">
+
+            <TextView
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:text="手机号码"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:singleLine="true"
+                android:textColor="@color/text_hint"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLine" />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_marginRight="@dimen/common_margin"
+            android:background="@drawable/login_bg_content_default_round_5"
+            android:text="确定提交"
+            android:textColor="@color/page_white"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
+
+
+</RelativeLayout>
