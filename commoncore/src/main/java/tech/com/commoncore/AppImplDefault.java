@@ -42,8 +42,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.message.PushAgent;
 
 import java.net.ConnectException;
 import java.net.SocketException;
@@ -106,26 +104,10 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
     @NonNull
     @Override
     public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-
-//        layout.setEnableHeaderTranslationContent(true)
-//                .setEnableOverScrollDrag(false);
-//        ClassicsHeader classicsHeader = new ClassicsHeader(mContext);
-//        return classicsHeader;
-
-
-//                layout.setEnableHeaderTranslationContent(false)
-//                        .setEnableOverScrollDrag(false);
-//                MaterialHeader materialHeader = new MaterialHeader(mContext);
-//                materialHeader.setColorSchemeColors(ContextCompat.getColor(mContext, R.color.colorTextBlack),
-//                        ContextCompat.getColor(mContext, R.color.colorTextBlackLight));
-//                return materialHeader;
-
-            layout.setEnableHeaderTranslationContent(true)
-            .setEnableOverScrollDrag(true);
-
-//            RefreshHeader header = new WaveSwipeHeader(mContext);
-            RefreshHeader header = new StoreHouseHeader(mContext);
-            return header;
+        layout.setEnableHeaderTranslationContent(true)
+                .setEnableOverScrollDrag(true);
+        RefreshHeader header = new StoreHouseHeader(mContext);
+        return header;
     }
 
     /**
@@ -143,34 +125,7 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
             //设置动画
             adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_RIGHT);
         }
-        //方式一:设置FastLoadMoreView--可参考FastLoadMoreView.Builder相应set方法
-        //默认配置请参考FastLoadMoreView.Builder(mContext)里初始化
-//        return new FastLoadMoreView.Builder(mContext)
-//                .setLoadingTextFakeBold(true)
-//                .setLoadingSize(SizeUtil.dp2px(20))
-                //                                .setLoadTextColor(Color.MAGENTA)
-                //                                //设置Loading 颜色-5.0以上有效
-                //                                .setLoadingProgressColor(Color.MAGENTA)
-                //                                //设置Loading drawable--会使Loading颜色失效
-                //                                .setLoadingProgressDrawable(R.drawable.dialog_loading_wei_bo)
-                //                                //设置全局TextView颜色
-                //                                .setLoadTextColor(Color.MAGENTA)
-                //                                //设置全局TextView文字字号
-                //                                .setLoadTextSize(SizeUtil.dp2px(14))
-                //                                .setLoadingText("努力加载中...")
-                //                                .setLoadingTextColor(Color.GREEN)
-                //                                .setLoadingTextSize(SizeUtil.dp2px(14))
-//                                                .setLoadEndText("我是有底线的")
-                //                                .setLoadEndTextColor(Color.GREEN)
-                //                                .setLoadEndTextSize(SizeUtil.dp2px(14))
-                //                                .setLoadFailText("哇哦!出错了")
-                //                                .setLoadFailTextColor(Color.RED)
-                //                                .setLoadFailTextSize(SizeUtil.dp2px(14))
-//                .build();
-        //方式二:使用adapter自带--其实我默认设置的和这个基本一致只是提供了相应设置方法
-                                return new SimpleLoadMoreView();
-        //方式三:参考SimpleLoadMoreView或FastLoadMoreView完全自定义自己的LoadMoreView
-        //                        return MyLoadMoreView();
+        return new SimpleLoadMoreView();
     }
 
     @Override
@@ -180,19 +135,10 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
     @Nullable
     @Override
     public LoadDialog createLoadingDialog(@Nullable Activity activity, String text) {
-        //        return new FastLoadDialog(activity,
-        //                new UIProgressDialog.WeBoBuilder(activity)
-        //                        .setMessage("加载中")
-        //                        .create())
-        //                .setCanceledOnTouchOutside(false)
-        //                .setMessage("请求数据中,请稍候...");
-        //注意使用UIProgressDialog时最好在Builder里设置提示文字setMessage不然后续再设置文字信息也不会显示
         return new LoadDialog(activity, new UIProgressDialog.WeChatBuilder(activity)
                 .setBackgroundColor(Color.parseColor("#FCFCFC"))
-                //                .setMinHeight(SizeUtil.dp2px(140))
-                //                .setMinWidth(SizeUtil.dp2px(270))
                 .setTextSizeUnit(TypedValue.COMPLEX_UNIT_PX)
-                .setMessage(text==null?"加载中...":text)
+                .setMessage(text == null ? "加载中..." : text)
                 .setLoadingSize(SizeUtil.dp2px(30))
                 .setTextSize(SizeUtil.dp2px(16f))
                 .setTextPadding(SizeUtil.dp2px(10))
@@ -319,7 +265,6 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
                 .setMessage("当前音量:" + mCurrentVolume)
                 .setBottomMargin(NavigationBarUtil.getNavigationBarHeight(StackUtil.getInstance().getCurrent().getWindowManager()))
                 .show();
-
     }
 
     @Override
@@ -426,23 +371,18 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
     @Override
     public boolean setNavigationBar(Activity activity, NavigationViewHelper helper, View bottomView) {
         //暂时注释掉
-                //其它默认属性请参考FastLifecycleCallbacks
-                helper.setLogEnable(BuildConfig.DEBUG)
-                        .setTransEnable(isTrans(activity))
-                        .setPlusNavigationViewEnable(isTrans(activity))
-//                        .setBottomView(PicturePreviewActivity.class.isAssignableFrom(activity.getClass()) ?
-//                                FindViewUtil.getTargetView(bottomView, R.id.select_bar_layout) : bottomView)
-                        .setNavigationViewColor(Color.argb(isTrans(activity) ? 0 : 102, 0, 0, 0))
-                        .setNavigationLayoutColor(Color.WHITE);
+        //其它默认属性请参考FastLifecycleCallbacks
+        helper.setLogEnable(BuildConfig.DEBUG)
+                .setTransEnable(isTrans(activity))
+                .setPlusNavigationViewEnable(isTrans(activity))
+                .setNavigationViewColor(Color.argb(isTrans(activity) ? 0 : 102, 0, 0, 0))
+                .setNavigationLayoutColor(Color.WHITE);
 
-                activity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-//                        LoggerManager.i(TAG, "isNavigationBarVisible:" + com.aries.library.fast.demo.util.NavigationBarUtil.isNavigationBarVisible(activity) + ";checkDeviceHasNavigationBar:" +
-//                                com.aries.library.fast.demo.util.NavigationBarUtil.checkDeviceHasNavigationBar(activity) +
-//                                ";getNavigationBarHeight:" + com.aries.library.fast.demo.util.NavigationBarUtil.getNavigationBarHeight(activity) + ";getSystemUiVisibility:" + activity.getWindow().getDecorView().getSystemUiVisibility());
-                    }
-                });
+        activity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+            }
+        });
         return isControlNavigation();
     }
 
@@ -459,43 +399,16 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 super.onActivityCreated(activity, savedInstanceState);
-                //阻止系统截屏功能
-                //activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-                //友盟推送
-                PushAgent.getInstance(mContext).onAppStart();
             }
 
             @Override
             public void onActivityResumed(Activity activity) {
-                if (activity instanceof FragmentActivity) {
-                    FragmentManager manager = ((FragmentActivity) activity).getSupportFragmentManager();
-                    List<Fragment> list = manager.getFragments();
-                    //有Fragment的FragmentActivity不需调用以下方法避免统计不准
-                    if (list == null || list.size() == 0) {
-                                                MobclickAgent.onPageStart(activity.getClass().getSimpleName());
-                    }
-                } else {
-                                        MobclickAgent.onPageStart(activity.getClass().getSimpleName());
-                }
-                //统计时长
-                                MobclickAgent.onResume(activity);
+
             }
 
             @Override
             public void onActivityPaused(Activity activity) {
-                //普通Activity直接onPageEnd
-                if (activity instanceof FragmentActivity) {
-                    FragmentManager manager = ((FragmentActivity) activity).getSupportFragmentManager();
-                    List<Fragment> list = manager.getFragments();
-                    //有Fragment的FragmentActivity不需调用以下方法避免统计不准
-                    if (list == null || list.size() == 0) {
-                                                MobclickAgent.onPageEnd(activity.getClass().getSimpleName());
-                    }
-                } else {
-                     MobclickAgent.onPageEnd(activity.getClass().getSimpleName());
-                }
-                //统计时长
-                    MobclickAgent.onPause(activity);
+
             }
 
             @Override
@@ -520,14 +433,12 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
             public void onFragmentResumed(FragmentManager fm, Fragment f) {
                 super.onFragmentResumed(fm, f);
                 LoggerManager.i(TAG, "onFragmentResumed:统计Fragment:" + f.getClass().getSimpleName());
-                                MobclickAgent.onPageStart(f.getClass().getSimpleName());
             }
 
             @Override
             public void onFragmentPaused(FragmentManager fm, Fragment f) {
                 super.onFragmentPaused(fm, f);
                 LoggerManager.i(TAG, "onFragmentPaused:统计Fragment:" + f.getClass().getSimpleName());
-                                MobclickAgent.onPageEnd(f.getClass().getSimpleName());
             }
         };
     }
@@ -662,10 +573,10 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
      */
     @Override
     public long quipApp(boolean isFirst, Activity activity) {
-        if(activity.getClass().getName().contains("MainActivity")){
+        if (activity.getClass().getName().contains("MainActivity")) {
             //默认配置
             if (isFirst) {
-                Toast.makeText(activity,"再按一次退出程序",Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "再按一次退出程序", Toast.LENGTH_SHORT).show();
             } else {
                 StackUtil.getInstance().exit();
             }
@@ -679,21 +590,6 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
      * @param activity
      */
     private void setStatusBarActivity(Activity activity) {
-        //暂时注释掉
-        //        if (PictureBaseActivity.class.isAssignableFrom(activity.getClass())) {
-        //            View contentView = FastUtil.getRootView(activity);
-        //            //该属性会影响适配滑动返回效果
-        //            contentView.setFitsSystemWindows(false);
-        //            ImageView imageView = contentView != null ? contentView.findViewById(R.id.picture_left_back) : null;
-        //            if (imageView != null) {
-        //                RelativeLayout layout = contentView.findViewById(R.id.rl_picture_title);
-        //                if (layout != null) {
-        //                    ViewCompat.setElevation(layout, activity.getResources().getDimension(R.dimen.dp_elevation));
-        //                }
-        //                //调整返回箭头大小
-        //                imageView.setPadding(SizeUtil.dp2px(15), SizeUtil.dp2px(4), SizeUtil.dp2px(4), SizeUtil.dp2px(4));
-        //            }
-        //        }
     }
 
     /**
@@ -702,8 +598,6 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
      * @return
      */
     protected boolean isTrans(Activity activity) {
-
-//        return RomUtil.isEMUI() && (RomUtil.getEMUIVersion().compareTo("EmotionUI_4.1") > 0) && activity.getClass() != SplashActivity.class;
         return false;
     }
 
@@ -714,7 +608,6 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
      */
     private boolean isControlNavigation() {
         LoggerManager.i(TAG, "mode:" + Build.MODEL);
-//        return !(RomUtil.isMIUI() && Build.MODEL.contains("8"));
         return false;
     }
 }

@@ -41,8 +41,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.message.PushAgent;
 
 import java.net.ConnectException;
 import java.net.SocketException;
@@ -376,17 +374,12 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
         helper.setLogEnable(BuildConfig.DEBUG)
                 .setTransEnable(isTrans(activity))
                 .setPlusNavigationViewEnable(isTrans(activity))
-//                        .setBottomView(PicturePreviewActivity.class.isAssignableFrom(activity.getClass()) ?
-//                                FindViewUtil.getTargetView(bottomView, R.id.select_bar_layout) : bottomView)
                 .setNavigationViewColor(Color.argb(isTrans(activity) ? 0 : 102, 0, 0, 0))
                 .setNavigationLayoutColor(Color.WHITE);
 
         activity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-//                        LoggerManager.i(TAG, "isNavigationBarVisible:" + com.aries.library.fast.demo.util.NavigationBarUtil.isNavigationBarVisible(activity) + ";checkDeviceHasNavigationBar:" +
-//                                com.aries.library.fast.demo.util.NavigationBarUtil.checkDeviceHasNavigationBar(activity) +
-//                                ";getNavigationBarHeight:" + com.aries.library.fast.demo.util.NavigationBarUtil.getNavigationBarHeight(activity) + ";getSystemUiVisibility:" + activity.getWindow().getDecorView().getSystemUiVisibility());
             }
         });
         return isControlNavigation();
@@ -405,43 +398,15 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 super.onActivityCreated(activity, savedInstanceState);
-                //阻止系统截屏功能
-                //activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-                //友盟推送
-                PushAgent.getInstance(mContext).onAppStart();
             }
 
             @Override
             public void onActivityResumed(Activity activity) {
-                if (activity instanceof FragmentActivity) {
-                    FragmentManager manager = ((FragmentActivity) activity).getSupportFragmentManager();
-                    List<Fragment> list = manager.getFragments();
-                    //有Fragment的FragmentActivity不需调用以下方法避免统计不准
-                    if (list == null || list.size() == 0) {
-                        MobclickAgent.onPageStart(activity.getClass().getSimpleName());
-                    }
-                } else {
-                    MobclickAgent.onPageStart(activity.getClass().getSimpleName());
-                }
-                //统计时长
-                MobclickAgent.onResume(activity);
             }
 
             @Override
             public void onActivityPaused(Activity activity) {
-                //普通Activity直接onPageEnd
-                if (activity instanceof FragmentActivity) {
-                    FragmentManager manager = ((FragmentActivity) activity).getSupportFragmentManager();
-                    List<Fragment> list = manager.getFragments();
-                    //有Fragment的FragmentActivity不需调用以下方法避免统计不准
-                    if (list == null || list.size() == 0) {
-                        MobclickAgent.onPageEnd(activity.getClass().getSimpleName());
-                    }
-                } else {
-                    MobclickAgent.onPageEnd(activity.getClass().getSimpleName());
-                }
-                //统计时长
-                MobclickAgent.onPause(activity);
+
             }
 
             @Override
@@ -465,15 +430,11 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
             @Override
             public void onFragmentResumed(FragmentManager fm, Fragment f) {
                 super.onFragmentResumed(fm, f);
-                LoggerManager.i(TAG, "onFragmentResumed:统计Fragment:" + f.getClass().getSimpleName());
-                MobclickAgent.onPageStart(f.getClass().getSimpleName());
             }
 
             @Override
             public void onFragmentPaused(FragmentManager fm, Fragment f) {
                 super.onFragmentPaused(fm, f);
-                LoggerManager.i(TAG, "onFragmentPaused:统计Fragment:" + f.getClass().getSimpleName());
-                MobclickAgent.onPageEnd(f.getClass().getSimpleName());
             }
         };
     }
@@ -625,21 +586,6 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
      * @param activity
      */
     private void setStatusBarActivity(Activity activity) {
-        //暂时注释掉
-        //        if (PictureBaseActivity.class.isAssignableFrom(activity.getClass())) {
-        //            View contentView = FastUtil.getRootView(activity);
-        //            //该属性会影响适配滑动返回效果
-        //            contentView.setFitsSystemWindows(false);
-        //            ImageView imageView = contentView != null ? contentView.findViewById(R.id.picture_left_back) : null;
-        //            if (imageView != null) {
-        //                RelativeLayout layout = contentView.findViewById(R.id.rl_picture_title);
-        //                if (layout != null) {
-        //                    ViewCompat.setElevation(layout, activity.getResources().getDimension(R.dimen.dp_elevation));
-        //                }
-        //                //调整返回箭头大小
-        //                imageView.setPadding(SizeUtil.dp2px(15), SizeUtil.dp2px(4), SizeUtil.dp2px(4), SizeUtil.dp2px(4));
-        //            }
-        //        }
     }
 
     /**
@@ -648,8 +594,6 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
      * @return
      */
     protected boolean isTrans(Activity activity) {
-
-//        return RomUtil.isEMUI() && (RomUtil.getEMUIVersion().compareTo("EmotionUI_4.1") > 0) && activity.getClass() != SplashActivity.class;
         return false;
     }
 
@@ -660,7 +604,6 @@ public class AppImplDefault implements DefaultRefreshHeaderCreator, LoadMoreFoot
      */
     private boolean isControlNavigation() {
         LoggerManager.i(TAG, "mode:" + Build.MODEL);
-//        return !(RomUtil.isMIUI() && Build.MODEL.contains("8"));
         return false;
     }
 }

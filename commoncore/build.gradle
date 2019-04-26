@@ -129,13 +129,6 @@ dependencies {
     //状态栏工具
     api 'com.gyf.immersionbar:immersionbar:2.3.2-beta01'
 
-    //极光推送 , 默认关闭使用 友盟整套(推送\统计\分享)
-
-    //    api 'cn.jiguang.sdk:jpush:3.1.6' //推送用极光
-
-    //    api 'cn.jiguang.sdk:jcore:1.2.6'
-    api project(':UMLibrary')
-
     api 'com.alibaba:arouter-api:1.4.1'
     // arouter-compiler 的注解依赖需要所有使用 ARouter 的 model 都添加依赖
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'

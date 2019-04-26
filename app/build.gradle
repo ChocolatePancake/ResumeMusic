@@ -60,19 +60,6 @@ android {
 //            signingConfig signingConfigs.config
         }
     }
-    productFlavors {
-        yyb {}//应用宝
-        hw {}//华为
-        qh360 {}//360
-        oppo {}//oppo
-        mi {}
-        mz {}
-        lx {}
-        sg {}
-        vivo {}
-        yyh {}
-        jl {}
-    }
 
     productFlavors.all {
         flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
