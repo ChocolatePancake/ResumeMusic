@@ -1,13 +1,11 @@
 package com.leancloud.circle.adapter;
 
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
@@ -18,21 +16,18 @@ import com.leancloud.circle.R;
 import com.leancloud.circle.entity.CircleSwitch;
 import com.vise.xsnow.event.BusManager;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import tech.com.commoncore.avdb.AVDbGlobal;
 import tech.com.commoncore.bus.CommitEvent;
-import tech.com.commoncore.bus.CommunityEvent;
 import tech.com.commoncore.manager.GlideManager;
 import tech.com.commoncore.plog;
 import tech.com.commoncore.utils.DateUtil;
 import tech.com.commoncore.utils.ToastUtil;
 
 import static tech.com.commoncore.avdb.AVDbManager.*;
-import static tech.com.commoncore.manager.ModelPathManager.circle_details;
 import static tech.com.commoncore.utils.DateUtil.FORMAT_5;
 
 public class CircleAdapter extends BaseQuickAdapter<AVObject, BaseViewHolder> {
@@ -222,7 +217,7 @@ public class CircleAdapter extends BaseQuickAdapter<AVObject, BaseViewHolder> {
             AVObject attention = new AVObject(TABLE_ATTENTION);
             attention.put(ATTENTION_USER, AVUser.getCurrentUser().getObjectId());
             attention.put(ATTENTION_OBSERVED_USER, obUserId);
-            attention.put(ATTENTION_ISDELETE, 0);
+            attention.put(ATTENTION_DELETE_FLAG, 0);
             myAttentionList.add(attention);
             AVDbGlobal.getInstance().getAVDb().addAttention(attention, null);
         } else {

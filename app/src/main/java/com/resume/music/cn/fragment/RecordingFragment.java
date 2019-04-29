@@ -1,6 +1,8 @@
 package com.resume.music.cn.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 
 import com.resume.music.cn.R;
@@ -40,9 +42,10 @@ public class RecordingFragment extends BaseFragment {
             }
         });
         mContentView.findViewById(R.id.play_button).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-
+                RecordService.getInstance().playInModeStream();
             }
         });
     }

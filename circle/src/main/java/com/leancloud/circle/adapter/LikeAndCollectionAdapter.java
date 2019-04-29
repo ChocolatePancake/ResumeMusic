@@ -19,7 +19,7 @@ import tech.com.commoncore.manager.GlideManager;
 import tech.com.commoncore.utils.DateUtil;
 import tech.com.commoncore.utils.ToastUtil;
 
-import static tech.com.commoncore.avdb.AVDbManager.ATTENTION_ISDELETE;
+import static tech.com.commoncore.avdb.AVDbManager.ATTENTION_DELETE_FLAG;
 import static tech.com.commoncore.avdb.AVDbManager.ATTENTION_OBSERVED_USER;
 import static tech.com.commoncore.avdb.AVDbManager.ATTENTION_USER;
 import static tech.com.commoncore.avdb.AVDbManager.COMMUNITY_CONTENT;
@@ -85,7 +85,7 @@ public class LikeAndCollectionAdapter extends BaseQuickAdapter<AVObject, BaseVie
             AVObject attention = new AVObject(TABLE_ATTENTION);
             attention.put(ATTENTION_USER, AVUser.getCurrentUser().getObjectId());
             attention.put(ATTENTION_OBSERVED_USER, circleUserId);
-            attention.put(ATTENTION_ISDELETE, 0);
+            attention.put(ATTENTION_DELETE_FLAG, 0);
             myAttentionList.add(attention);
             AVDbGlobal.getInstance().getAVDb().addAttention(attention, null);
             handlerAttentionView(tx, true);

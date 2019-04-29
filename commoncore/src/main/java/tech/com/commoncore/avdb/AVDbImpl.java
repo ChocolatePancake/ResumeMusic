@@ -155,7 +155,7 @@ public class AVDbImpl implements AVDb {
             AVObject attention = new AVObject(TABLE_ATTENTION);
             attention.put(ATTENTION_USER, AVUser.getCurrentUser().getObjectId());
             attention.put(ATTENTION_OBSERVED_USER, obUser);
-            attention.put(ATTENTION_ISDELETE, 0);
+            attention.put(ATTENTION_DELETE_FLAG, 0);
             attention.saveInBackground(callback);
         }
     }

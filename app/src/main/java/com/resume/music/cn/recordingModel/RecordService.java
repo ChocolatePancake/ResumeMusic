@@ -7,9 +7,10 @@ import android.media.AudioRecord;
 import android.media.AudioTrack;
 import android.media.MediaRecorder;
 import android.os.Build;
-import android.os.Environment;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+
+import com.resume.music.cn.App;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,16 +52,16 @@ public class RecordService {
     private AudioTrack audioTrack;
     private byte[] audioData;
     private FileInputStream fileInputStream;
-    private String fileName;
-
+    private String fileName = "temporary_elephant.pcm";
+    private String path;
+    private String wavFileName = "";
 
     public void startRecord() {
-        plog.paly("开始录音");
         minBufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE_IN_HZ, CHANNEL_CONFIG, AUDIO_FORMAT);
         audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE_IN_HZ, CHANNEL_CONFIG, AUDIO_FORMAT, minBufferSize);
         audioData = new byte[minBufferSize];
-        fileName = "aa" + System.currentTimeMillis() + "elephant.pcm";
-        final File file = new File(fileName);
+        path = App.getInstance().getExternalFilesDir(null).getPath();
+        final File file = new File(path, fileName);
         if (!file.mkdirs()) {
             Log.e(TAG, "Directory not created");
         }
@@ -69,8 +70,6 @@ public class RecordService {
         }
         audioRecord.startRecording();
         isRecording = true;
-
-        // TODO: 2018/3/10 pcm数据无法直接播放，保存为WAV格式。
 
         new Thread(new Runnable() {
             @Override
@@ -107,8 +106,9 @@ public class RecordService {
 
     private void pcmToWav() {
         PcmToWavUtil pcmToWavUtil = new PcmToWavUtil(SAMPLE_RATE_IN_HZ, CHANNEL_CONFIG, AUDIO_FORMAT);
-        File pcmFile = new File(fileName);
-        File wavFile = new File("aa" + System.currentTimeMillis() + "elephant.wav");
+        wavFileName = "aa" + System.currentTimeMillis() + "elephant.wav";
+        File pcmFile = new File(path, fileName);
+        File wavFile = new File(path, wavFileName);
         if (!wavFile.mkdirs()) {
             plog.paly("没有这个文件");
         }
@@ -125,12 +125,11 @@ public class RecordService {
             audioRecord.stop();
             audioRecord.release();
             audioRecord = null;
-            //recordingThread = null;
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void playInModeStream() {
+    public void playInModeStream() {
         /*
          * SAMPLE_RATE_INHZ 对应pcm音频的采样率
          * channelConfig 对应pcm音频的声道
@@ -138,8 +137,7 @@ public class RecordService {
          * */
         int channelConfig = AudioFormat.CHANNEL_OUT_MONO;
         final int minBufferSize = AudioTrack.getMinBufferSize(SAMPLE_RATE_IN_HZ, channelConfig, AUDIO_FORMAT);
-        audioTrack = new AudioTrack(
-                new AudioAttributes.Builder()
+        audioTrack = new AudioTrack(new AudioAttributes.Builder()
                         .setUsage(AudioAttributes.USAGE_MEDIA)
                         .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                         .build(),
@@ -152,7 +150,7 @@ public class RecordService {
                 AudioManager.AUDIO_SESSION_ID_GENERATE);
         audioTrack.play();
 
-        File file = new File(fileName);
+        File file = new File(path, wavFileName);
         try {
             fileInputStream = new FileInputStream(file);
             new Thread(new Runnable() {
