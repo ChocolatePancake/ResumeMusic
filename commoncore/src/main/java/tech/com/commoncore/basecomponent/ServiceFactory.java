@@ -4,11 +4,9 @@ package tech.com.commoncore.basecomponent;
 import tech.com.commoncore.basecomponent.empty_service.EmptyCircleFragment;
 import tech.com.commoncore.basecomponent.empty_service.EmptyFragmentService;
 import tech.com.commoncore.basecomponent.empty_service.EmptyLoginService;
-import tech.com.commoncore.basecomponent.empty_service.EmptyZiXunService;
 import tech.com.commoncore.basecomponent.service.ICircleService;
 import tech.com.commoncore.basecomponent.service.IFragmentService;
 import tech.com.commoncore.basecomponent.service.ILoginService;
-import tech.com.commoncore.basecomponent.service.IZiXunService;
 
 public class ServiceFactory {
     /**
@@ -38,8 +36,6 @@ public class ServiceFactory {
     private IFragmentService perconalService;
     /*行情服务*/
     private IFragmentService hangqingService;
-    /*资讯服务*/
-    private IZiXunService zixunService;
     /*期货服务*/
     private IFragmentService futuresService;
 
@@ -137,18 +133,6 @@ public class ServiceFactory {
             perconalService = new EmptyFragmentService();
         }
         return perconalService;
-    }
-
-    //-----------------------资讯------------------------
-    public void setZixunService(IZiXunService zixunService) {
-        this.zixunService = zixunService;
-    }
-
-    public IZiXunService getZixunServiceService() {
-        if (zixunService == null) {
-            zixunService = new EmptyZiXunService();
-        }
-        return zixunService;
     }
 
     //--------------------期货行情-----------------------

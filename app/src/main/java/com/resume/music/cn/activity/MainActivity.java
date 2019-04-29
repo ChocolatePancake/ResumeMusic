@@ -12,6 +12,8 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.resume.music.cn.R;
 import com.resume.music.cn.entity.TabEntity;
+import com.resume.music.cn.fragment.RecordingFragment;
+import com.resume.music.cn.fragment.VideoFragment;
 import com.vise.xsnow.event.IEvent;
 import com.vise.xsnow.event.Subscribe;
 
@@ -173,7 +175,7 @@ public class MainActivity extends BaseActivity {
     /*第一个tab*/
     private void showFirstFragment() {
         if (mainFirstFragment == null) {
-            mainFirstFragment = ServiceFactory.getInstance().getHomeService().newEntryFragment(null);
+            mainFirstFragment = RecordingFragment.newInstance();
             mTransaction.add(R.id.fl_main_content, mainFirstFragment, TAG_F_FIRST);
         } else {
             mTransaction.show(mainFirstFragment);
@@ -183,7 +185,7 @@ public class MainActivity extends BaseActivity {
     /*第二个tab*/
     private void showSecondFragment() {
         if (mainSecondFragment == null) {
-            mainSecondFragment = ServiceFactory.getInstance().getZixunServiceService().newVideoFragment(null);
+            mainSecondFragment = VideoFragment.newInstance();
             mTransaction.add(R.id.fl_main_content, mainSecondFragment, TAG_F_THIRD);
         } else {
             mTransaction.show(mainSecondFragment);

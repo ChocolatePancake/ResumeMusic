@@ -89,14 +89,12 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$support_version"
     implementation "com.android.support:appcompat-v7:$support_version"
 
+    implementation 'com.android.support:support-v4:28.0.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     implementation 'com.github.open-android:JieCaoVideoPlayer:0.1.0'
 
     implementation project(':commoncore')
-    //以下是加载的模块
     runtimeOnly project(':login')
-    runtimeOnly project(':home')
     runtimeOnly project(':circle')
     runtimeOnly project(':my')
-    runtimeOnly project(':zixun')
 }
