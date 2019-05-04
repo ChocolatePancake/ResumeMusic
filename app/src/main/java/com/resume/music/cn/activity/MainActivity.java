@@ -12,6 +12,7 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.resume.music.cn.R;
 import com.resume.music.cn.entity.TabEntity;
+import com.resume.music.cn.fragment.MonadFragment;
 import com.resume.music.cn.fragment.RecordingFragment;
 import com.resume.music.cn.fragment.VideoFragment;
 import com.vise.xsnow.event.IEvent;
@@ -37,18 +38,18 @@ public class MainActivity extends BaseActivity {
     private FragmentTransaction mTransaction;
     private int mCurrentIndex;
 
-    private String[] mTitles = {"首页", "自选", "行情", "我的"};
+    private String[] mTitles = {"首页", "功能", "发现", "我的"};
     private int[] mIconUnSelectIds = {
             R.mipmap.icon_tab_un_home,
             R.mipmap.icon_tab_un_optional,
             R.mipmap.icon_tab_un_market,
-            R.mipmap.icon_tab_un_me
+            R.mipmap.icon_tab_un_my
     };
     private int[] mIconSelectIds = {
             R.mipmap.icon_tab_home,
             R.mipmap.icon_tab_optional,
             R.mipmap.icon_tab_market,
-            R.mipmap.icon_tab_me
+            R.mipmap.icon_tab_my
     };
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
@@ -195,7 +196,7 @@ public class MainActivity extends BaseActivity {
     /*第三个tab*/
     private void showThirdFragment() {
         if (mainThirdFragment == null) {
-            mainThirdFragment = ServiceFactory.getInstance().getCircleService().newFindFragment(null);
+            mainThirdFragment = MonadFragment.newInstance();
             mTransaction.add(R.id.fl_main_content, mainThirdFragment, TAG_F_SECOND);
         } else {
             mTransaction.show(mainThirdFragment);

@@ -123,7 +123,7 @@ public class RegisterActivity extends BaseTitleActivity implements View.OnClickL
                     ToastUtil.show("注册成功");
                     //保存服务器密码+本地账号密码.
                     saveUserInfo(avUser.getUsername(), password);
-                    avUser.put(AVDbManager.USER_NICKE_NAME, phone);
+                    avUser.put(AVDbManager.USER_NICK_NAME, phone);
                     avUser.saveInBackground();
                     //给一个默认昵称-手机号
                     setPw(avUser, password);

@@ -70,7 +70,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/dp_26"
             android:text="注册账号"
-            android:textColor="#4d77ff"
+            android:textColor="#6293F0"
             android:textSize="@dimen/sp_15" />
 
     </LinearLayout>

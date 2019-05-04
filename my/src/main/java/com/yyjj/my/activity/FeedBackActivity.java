@@ -13,8 +13,8 @@ import com.aries.ui.view.title.TitleBarView;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 import com.yyjj.my.R;
-import com.yyjj.my.db.AVDbManager;
 
+import tech.com.commoncore.avdb.AVDbManager;
 import tech.com.commoncore.base.BaseTitleActivity;
 import tech.com.commoncore.utils.DataUtils;
 import tech.com.commoncore.utils.ToastUtil;
@@ -89,9 +89,9 @@ public class FeedBackActivity extends BaseTitleActivity {
             return;
         }
         showLoading();
-        AVObject feedback = new AVObject(AVDbManager.TABLE_FEEDBACK);
-        feedback.put(AVDbManager.FEEDBACK_USER, AVUser.getCurrentUser());
-        feedback.put(AVDbManager.FEEDBACK_CONTENT, content);
+//        AVObject feedback = new AVObject(AVDbManager.TABLE_FEEDBACK);
+//        feedback.put(AVDbManager.FEEDBACK_USER, AVUser.getCurrentUser());
+//        feedback.put(AVDbManager.FEEDBACK_CONTENT, content);
         mContentView.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -101,18 +101,5 @@ public class FeedBackActivity extends BaseTitleActivity {
             }
         }, 1000);
 
-//        feedback.saveInBackground(new SaveCallback() {
-//            @Override
-//            public void done(AVException e) {
-//                hideLoading();
-//                    ToastUtil.show("感谢您的反馈。");
-//                if (e == null) {
-//                    etFeedback.setText("");
-//                    FeedBackActivity.this.finish();
-//                } else {
-//                    ToastUtil.show("反馈失败,请检查网络是否正常。");
-//                }
-//            }
-//        });
     }
 }

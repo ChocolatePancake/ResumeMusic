@@ -94,24 +94,9 @@ public class PersonalActivity extends BaseTitleActivity implements EasyPermissio
     }
 
     private void initViews() {
-        tvPhone.setText(AVUser.getCurrentUser().getString(AVDbManager.USER_PHONE));
-        etTitle.setText(AVUser.getCurrentUser().getString(AVDbManager.USER_NICKE_NAME));
+        etTitle.setText(AVUser.getCurrentUser().getString(AVDbManager.USER_NICK_NAME));
         GlideManager.loadCircleImg(AVUser.getCurrentUser().getString(AVDbManager.USER_HEAD_ICON), ivIcon, R.mipmap.ic_default_head);
-        if (AVUser.getCurrentUser().getString(AVDbManager.USER_MALE) == null) {
-            radiobtn3.setChecked(true);
-            radiobtn1.setChecked(false);
-            radiobtn2.setChecked(false);
-        } else if (AVUser.getCurrentUser().getString(AVDbManager.USER_MALE).equals("男")) {
-            radiobtn1.setChecked(true);
-            radiobtn2.setChecked(false);
-            radiobtn3.setChecked(false);
 
-
-        } else {
-            radiobtn2.setChecked(true);
-            radiobtn1.setChecked(false);
-            radiobtn3.setChecked(false);
-        }
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +122,6 @@ public class PersonalActivity extends BaseTitleActivity implements EasyPermissio
         String name = etTitle.getText().toString().trim();
         String male = getMale();
 
-        AVDbManager.updateNickAndMale(name, male);
         BusManager.getBus().post(new PersonalChangeEvent());
         ToastUtil.show("修改成功");
         finish();

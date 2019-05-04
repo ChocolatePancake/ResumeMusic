@@ -24,7 +24,6 @@ import com.avos.avoscloud.ProgressCallback;
 import com.avos.avoscloud.SaveCallback;
 import com.vise.xsnow.event.BusManager;
 import com.yyjj.my.R;
-import com.yyjj.my.db.AVDbManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,6 +32,7 @@ import java.util.List;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 import tech.com.commoncore.Config;
+import tech.com.commoncore.avdb.AVDbManager;
 import tech.com.commoncore.base.BaseTitleActivity;
 import tech.com.commoncore.event.PersonalChangeEvent;
 import tech.com.commoncore.manager.GlideManager;
@@ -44,9 +44,6 @@ import tech.com.commoncore.widget.photoPicker.MyPhotoPickerActivity;
 
 import static tech.com.commoncore.manager.ModelPathManager.my_settingPath;
 
-/**
- * Desc:
- */
 @Route(path = my_settingPath)
 public class PersonalSettingActivity extends BaseTitleActivity implements EasyPermissions.PermissionCallbacks {
     private static final int PRC_PHOTO_PICKER = 1;
@@ -104,9 +101,9 @@ public class PersonalSettingActivity extends BaseTitleActivity implements EasyPe
             sign = "您还没有登录哦";
         } else {
             name = avUser.getUsername();
-            headUrl = (String) avUser.get(AVDbManager.AUTHOR_ICON);
+            headUrl = (String) avUser.get(AVDbManager.USER_HEAD_ICON);
             number = avUser.getMobilePhoneNumber();
-            nikeName = (String) avUser.get(AVDbManager.USER_NICKE_NAME);
+            nikeName = (String) avUser.get(AVDbManager.USER_NICK_NAME);
             String s = (String) avUser.get(AVDbManager.USER_SIGN);
             if (s == null || s.isEmpty()) {
             } else {
@@ -247,7 +244,7 @@ public class PersonalSettingActivity extends BaseTitleActivity implements EasyPe
             return;
         }
         AVUser user = AVUser.getCurrentUser();
-        user.put(AVDbManager.USER_NICKE_NAME, afterName);
+        user.put(AVDbManager.USER_NICK_NAME, afterName);
         user.saveInBackground();
         tvNickname.setText(afterName);
         BusManager.getBus().post(new PersonalChangeEvent());

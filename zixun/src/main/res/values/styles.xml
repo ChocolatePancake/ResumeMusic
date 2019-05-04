@@ -1,7 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="MyRatingBarStyle" parent="Base.Widget.AppCompat.RatingBar" tools:ignore="ResourceName">
-
-    </style>
-
-</resources>

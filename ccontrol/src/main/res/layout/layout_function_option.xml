@@ -16,14 +16,14 @@
 
         <ImageView
             android:id="@+id/left_icon"
-            android:layout_width="14dp"
-            android:layout_height="14dp" />
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
 
         <TextView
             android:id="@+id/message_tx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:textColor="#333333"
             android:textSize="16sp" />
@@ -38,7 +38,7 @@
 
         <ImageView
             android:id="@+id/right_icon"
-            android:layout_width="7dp"
+            android:layout_width="14dp"
             android:layout_height="14dp" />
 
     </LinearLayout>

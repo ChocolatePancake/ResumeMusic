@@ -25,8 +25,8 @@
             app:tl_iconHeight="@dimen/dp_24"
             app:tl_iconWidth="@dimen/dp_24"
             app:tl_indicator_height="@dimen/dp_0"
-            app:tl_textSelectColor="#FFFF6133"
-            app:tl_textUnselectColor="#FF9B9B9B"
+            app:tl_textSelectColor="#6293F0"
+            app:tl_textUnselectColor="#dbdbdb"
             app:tl_textsize="11sp" />
 
     </RelativeLayout>

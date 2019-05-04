@@ -116,17 +116,17 @@ public class PasswordChangeActivity extends BaseTitleActivity {
             return;
         }
 
-        AVDbManager.changePassword(oldPass, newpass, new UpdatePasswordCallback() {
-            @Override
-            public void done(AVException e) {
-                if (e == null) {
-                    CacheData.setLoginPassword(mContext, newpass);
-                    ToastUtil.show("密码更改成功");
-                    PasswordChangeActivity.this.finish();
-                } else {
-                    ToastUtil.show("旧密码不正确");
-                }
-            }
-        });
+//        AVDbManager.changePassword(oldPass, newpass, new UpdatePasswordCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                if (e == null) {
+//                    CacheData.setLoginPassword(mContext, newpass);
+//                    ToastUtil.show("密码更改成功");
+//                    PasswordChangeActivity.this.finish();
+//                } else {
+//                    ToastUtil.show("旧密码不正确");
+//                }
+//            }
+//        });
     }
 }

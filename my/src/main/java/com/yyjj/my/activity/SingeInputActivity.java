@@ -10,8 +10,8 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.yyjj.my.R;
-import com.yyjj.my.db.AVDbManager;
 
+import tech.com.commoncore.avdb.AVDbManager;
 import tech.com.commoncore.base.BaseTitleActivity;
 import tech.com.commoncore.utils.ToastUtil;
 

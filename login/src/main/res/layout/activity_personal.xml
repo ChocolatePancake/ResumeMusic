@@ -88,7 +88,6 @@
                 android:id="@+id/radiogroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -166,6 +165,5 @@
             android:textColor="@color/page_white"
             android:textSize="@dimen/sp_16" />
     </LinearLayout>
-
 
 </RelativeLayout>

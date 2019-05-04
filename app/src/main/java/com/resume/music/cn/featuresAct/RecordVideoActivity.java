@@ -15,6 +15,7 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.resume.music.cn.App;
 import com.resume.music.cn.R;
 
@@ -25,6 +26,9 @@ import java.util.Date;
 
 import tech.com.commoncore.base.BaseActivity;
 
+import static tech.com.commoncore.manager.ModelPathManager.main_recordVideo;
+
+@Route(path = main_recordVideo)
 public class RecordVideoActivity extends BaseActivity implements View.OnClickListener {
 
     //UI

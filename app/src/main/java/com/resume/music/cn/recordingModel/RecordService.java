@@ -56,6 +56,10 @@ public class RecordService {
     private String path;
     private String wavFileName = "";
 
+    public boolean isRecording() {
+        return isRecording;
+    }
+
     public void startRecord() {
         minBufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE_IN_HZ, CHANNEL_CONFIG, AUDIO_FORMAT);
         audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE_IN_HZ, CHANNEL_CONFIG, AUDIO_FORMAT, minBufferSize);
@@ -93,7 +97,6 @@ public class RecordService {
                         }
                     }
                     try {
-                        plog.paly("录音结束");
                         fos.close();
                         pcmToWav();
                     } catch (IOException e) {
@@ -138,9 +141,9 @@ public class RecordService {
         int channelConfig = AudioFormat.CHANNEL_OUT_MONO;
         final int minBufferSize = AudioTrack.getMinBufferSize(SAMPLE_RATE_IN_HZ, channelConfig, AUDIO_FORMAT);
         audioTrack = new AudioTrack(new AudioAttributes.Builder()
-                        .setUsage(AudioAttributes.USAGE_MEDIA)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                        .build(),
+                .setUsage(AudioAttributes.USAGE_MEDIA)
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .build(),
                 new AudioFormat.Builder().setSampleRate(SAMPLE_RATE_IN_HZ)
                         .setEncoding(AUDIO_FORMAT)
                         .setChannelMask(channelConfig)
@@ -173,7 +176,6 @@ public class RecordService {
                     }
                 }
             }).start();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

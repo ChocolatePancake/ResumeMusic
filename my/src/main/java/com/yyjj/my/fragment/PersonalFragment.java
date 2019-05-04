@@ -18,11 +18,10 @@ import com.vise.xsnow.event.Subscribe;
 import com.yyjj.my.R;
 import com.yyjj.my.activity.FeedBackActivity;
 import com.yyjj.my.activity.NotificationActivity;
-import com.yyjj.my.activity.OnLineServiceActivity;
 import com.yyjj.my.activity.PersonalSettingActivity;
 import com.yyjj.my.activity.SettingsActivity;
-import com.yyjj.my.db.AVDbManager;
 
+import tech.com.commoncore.avdb.AVDbManager;
 import tech.com.commoncore.base.BaseFragment;
 import tech.com.commoncore.manager.GlideManager;
 import tech.com.commoncore.manager.ModelPathManager;
@@ -81,20 +80,24 @@ public class PersonalFragment extends BaseFragment {
         mIvIcon.setOnClickListener(onNoDoubleClickListener);
         mTvNick.setOnClickListener(onNoDoubleClickListener);
         mTvDec.setOnClickListener(onNoDoubleClickListener);
-        mContentView.findViewById(R.id.persona_item_setting).setOnClickListener(onNoDoubleClickListener);
-        mContentView.findViewById(R.id.persona_item_idea).setOnClickListener(onNoDoubleClickListener);
-        mContentView.findViewById(R.id.persona_item_massage).setOnClickListener(onNoDoubleClickListener);
-        mContentView.findViewById(R.id.persona_item_date).setOnClickListener(onNoDoubleClickListener);
-        mContentView.findViewById(R.id.settings_collection_tx).setOnClickListener(onNoDoubleClickListener);
-        mContentView.findViewById(R.id.settings_like_tx).setOnClickListener(onNoDoubleClickListener);
-        mContentView.findViewById(R.id.title_bar_server_image).setOnClickListener(onNoDoubleClickListener);
-        mContentView.findViewById(R.id.title_bar_search_image).setOnClickListener(onNoDoubleClickListener);
+        mContentView.findViewById(R.id.persona_item_4).setOnClickListener(onNoDoubleClickListener);
+        mContentView.findViewById(R.id.persona_item_3).setOnClickListener(onNoDoubleClickListener);
+        mContentView.findViewById(R.id.persona_item_1).setOnClickListener(onNoDoubleClickListener);
+        mContentView.findViewById(R.id.persona_item_2).setOnClickListener(onNoDoubleClickListener);
         setUserInfo();
     }
 
     public void onNoDoubleClickListener(int id) {
         AVUser avUser = AVUser.getCurrentUser();
-        if (id == R.id.persona_item_date) {
+        if (id == R.id.persona_item_1) {
+            if (avUser == null) {
+                ARouter.getInstance().build(ModelPathManager.login_loginPath).navigation();
+            } else {
+                ARouter.getInstance().build(ModelPathManager.main_myVideo).navigation();
+            }
+            return;
+        }
+        if (id == R.id.persona_item_2) {
             if (avUser == null) {
                 ARouter.getInstance().build(ModelPathManager.login_loginPath).navigation();
             } else {
@@ -102,23 +105,15 @@ public class PersonalFragment extends BaseFragment {
             }
             return;
         }
-        if (id == R.id.persona_item_massage) {
+        if (id == R.id.persona_item_3) {
             if (avUser == null) {
                 ARouter.getInstance().build(ModelPathManager.login_loginPath).navigation();
             } else {
-                FastUtil.startActivity(mContext, NotificationActivity.class);
+                ARouter.getInstance().build(ModelPathManager.main_myMusic).navigation();
             }
             return;
         }
-        if (id == R.id.persona_item_idea) {
-            if (avUser == null) {
-                ARouter.getInstance().build(ModelPathManager.login_loginPath).navigation();
-            } else {
-                FastUtil.startActivity(mContext, FeedBackActivity.class);
-            }
-            return;
-        }
-        if (id == R.id.persona_item_setting) {
+        if (id == R.id.persona_item_4) {
             FastUtil.startActivity(mContext, SettingsActivity.class);
             return;
         }
@@ -129,32 +124,6 @@ public class PersonalFragment extends BaseFragment {
                 FastUtil.startActivity(mContext, PersonalSettingActivity.class);
             }
             return;
-        }
-        if (id == R.id.settings_collection_tx) {
-            if (avUser == null) {
-                ARouter.getInstance().build(ModelPathManager.login_loginPath).navigation();
-            } else {
-                ARouter.getInstance().build(ModelPathManager.circle_collection).navigation();
-            }
-            return;
-        }
-        if (id == R.id.settings_like_tx) {
-            if (avUser == null) {
-                ARouter.getInstance().build(ModelPathManager.login_loginPath).navigation();
-            } else {
-                ARouter.getInstance().build(ModelPathManager.circle_like).navigation();
-            }
-            return;
-        }
-        if (id == R.id.title_bar_server_image) {
-            if (avUser == null) {
-                ARouter.getInstance().build(ModelPathManager.login_loginPath).navigation();
-            } else {
-                FastUtil.startActivity(mContext, OnLineServiceActivity.class);
-            }
-        }
-        if (id == R.id.title_bar_search_image) {
-            ARouter.getInstance().build(ModelPathManager.futures_searchValue).navigation();
         }
     }
 
@@ -168,9 +137,9 @@ public class PersonalFragment extends BaseFragment {
         String sign = "您还没有登录哦";
         if (avUser != null) {
             name = avUser.getUsername();
-            headUrl = (String) avUser.get(AVDbManager.AUTHOR_ICON);
+            headUrl = (String) avUser.get(AVDbManager.USER_HEAD_ICON);
             number = avUser.getMobilePhoneNumber();
-            nikeName = (String) avUser.get(AVDbManager.USER_NICKE_NAME);
+            nikeName = (String) avUser.get(AVDbManager.USER_NICK_NAME);
             nikeName = (nikeName == null || nikeName.isEmpty()) ? "未设置昵称" : nikeName;
             sign = (String) avUser.get(AVDbManager.USER_SIGN);
             sign = (sign == null || sign.isEmpty()) ? "这个家伙很懒,什么也没留下" : sign;

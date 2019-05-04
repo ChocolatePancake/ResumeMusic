@@ -8,15 +8,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/UMLibrary" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/ccontrol" />
-            <option value="$PROJECT_DIR$/circle" />
             <option value="$PROJECT_DIR$/commoncore" />
-            <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/my" />
-            <option value="$PROJECT_DIR$/zixun" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

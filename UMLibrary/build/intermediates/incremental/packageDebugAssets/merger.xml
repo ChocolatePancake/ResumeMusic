@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\GitProject\ResumeMusic\UMLibrary\assets"><file name="geo_global_ca.cer" path="D:\GitProject\ResumeMusic\UMLibrary\assets\geo_global_ca.cer"/></source><source path="D:\GitProject\ResumeMusic\UMLibrary\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\GitProject\ResumeMusic\UMLibrary\src\debug\assets"/></dataSet></merger>

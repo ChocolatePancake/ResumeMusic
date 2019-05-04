@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:zsr="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".fragment.RecordingFragment">
 
     <LinearLayout
@@ -11,28 +13,35 @@
         android:layout_gravity="bottom"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/start_button"
+        <com.zhengsr.viewpagerlib.view.BannerViewPager
+            android:id="@+id/loop_viewpager_arc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="开始" />
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:clipChildren="false"
+            zsr:isloop="false"
+            zsr:switchtime="600" />
 
-        <Button
-            android:id="@+id/stop_button"
+        <com.zhengsr.viewpagerlib.indicator.ZoomIndicator
+            android:id="@+id/bottom_zoom_arc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="停止" />
+            android:layout_height="30dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            zsr:zoom_alpha_min="0.5"
+            zsr:zoom_leftmargin="10dp"
+            zsr:zoom_max="1.5" />
 
-
-        <Button
-            android:id="@+id/play_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="播放" />
 
     </LinearLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -14,20 +14,10 @@ public class ModelPathManager {
     public final static String my_onLineServerPath = "/my/service";
     public final static String my_settingPath = "/my/setting";
 
-
-    ////////////////////////////////////////////zixun模块//////////////////////////////////////////////
-    public final static String zixun_detailPath = "/zixun/article/detail";
-    public final static String zixun_articlePath = "/zixun/article/list";
-    public final static String zixun_videoPath = "/zixun/video";
-
-    //////////////////////////////////////////futures模块///////////////////////////////////////////
-    public final static String futures_noviceSchoolPath = "/futures/novice/school";
-    public final static String futures_searchValue = "/futures/search/value";
-    public final static String futures_chart = "/futures/chart";
-
-    /////////////////////////////////////////circle模块/////////////////////////////////////////////
-    public final static String circle_like = "/circle/like";
-    public final static String circle_collection = "/circle/collection";
-    public final static String circle_details = "/circle/details";
-
+    ////////////////////////////////////////////main模块////////////////////////////////////////////
+    public final static String main_myMusic = "/main/myMusic";
+    public final static String main_myVideo = "/main/myVideo";
+    public final static String main_recordVideo = "/main/recordVideo";
+    public final static String main_recordMusic = "/main/recordMusic";
+    public final static String main_musicStudio = "/main/musicStudio";
 }

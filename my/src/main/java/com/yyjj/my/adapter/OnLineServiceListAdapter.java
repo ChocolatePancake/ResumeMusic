@@ -5,12 +5,12 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yyjj.my.R;
-import com.yyjj.my.db.AVDbManager;
 import com.yyjj.my.entity.OnLineServiceMsg;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import tech.com.commoncore.avdb.AVDbManager;
 import tech.com.commoncore.manager.GlideManager;
 import tech.com.commoncore.utils.DateUtil;
 

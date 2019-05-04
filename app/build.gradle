@@ -95,6 +95,5 @@ dependencies {
 
     implementation project(':commoncore')
     runtimeOnly project(':login')
-    runtimeOnly project(':circle')
     runtimeOnly project(':my')
 }

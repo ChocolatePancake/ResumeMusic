@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\GitProject\CrudeKoala\UMLibrary\assets"><file name="geo_global_ca.cer" path="D:\GitProject\CrudeKoala\UMLibrary\assets\geo_global_ca.cer"/></source><source path="D:\GitProject\CrudeKoala\UMLibrary\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\GitProject\CrudeKoala\UMLibrary\src\release\assets"/></dataSet></merger>

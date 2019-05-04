@@ -1,1 +1,1 @@
-include ':app', ':ccontrol', ':commoncore', ':login', ':my', ':circle'
+include ':app', ':ccontrol', ':commoncore', ':login', ':my'

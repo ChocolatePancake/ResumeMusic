@@ -1,47 +1,24 @@
 package tech.com.commoncore.avdb;
 
-import android.support.annotation.NonNull;
-
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.CountCallback;
-import com.avos.avoscloud.DeleteCallback;
-import com.avos.avoscloud.FindCallback;
-import com.avos.avoscloud.SaveCallback;
-import com.avos.avoscloud.UpdatePasswordCallback;
-
-import java.util.List;
-
-import tech.com.commoncore.utils.ToastUtil;
-
-
 public class AVDbManager {
 
     /*用户表相关字段*/
-    public static final String USER_NICKE_NAME = "nickName";                //昵称
+    public static final String USER_NICK_NAME = "nickName";                //昵称
     public static final String USER_SIGN = "sign";                          //个性签名
-    public static final String USER_USERNAME = "username";                  //个性签名
     public static final String USER_HEAD_ICON = "icon";                     //头像
-    public static final String USER_INTEGRAL = "integral";                  //积分
-    public static final String USER_PHONE = "mobilePhoneNumber";            //电话
-    public static final String USER_MALE = "male";                          //电话
-    public static final String USER_FOCUS = "focus";                        //关注
 
-    /*圈子交流表相关字段*/
-    public static final String TABLE_COMMUNITY = "Community";               //圈子交流表
-    public static final String COMMUNITY_NAME = "nikeName";                 //发表用户昵称
-    public static final String COMMUNITY_USER_HEAD = "userHead";            //用户头像地址
-    public static final String COMMUNITY_ID = "id";                         //id
-    public static final String COMMUNITY_USER = "user";                     //发表者
-    public static final String COMMUNITY_IMG_LIST = "imgList";              //图片
-    public static final String COMMUNITY_CONTENT = "content";               //内容
-    public static final String COMMUNITY_COLLECTION_COUNT = "collectionCount";    //收藏
-    public static final String COMMUNITY_LIKE_COUNT = "likeCount";          //点赞数
-    public static final String COMMUNITY_COMMENT_COUNT = "commentCount";    //评论数
-    public static final String COMMUNITY_IS_DELETED = "isDelete";           //话题删除标记
-    public static final String COMMUNITY_VIDEO_NAME = "videoName";          //视频的名称
+    /*多媒体文件表*/
+    public static final String TABLE_MEDIA = "Media";                       //圈子交流表
+    public static final String MEDIA_USER = "user";                         //发表者
+    public static final String MEDIA_FILE = "file";                         //文件地址
+    public static final String MEDIA_FILE_NAME = "fileName";                //文件别名
+    public static final String MEDIA_FILE_TYPE = "fileType";                //文件类型
+    public static final String MEDIA_TYPE_MUSIC = "music";                  //文件类型
+    public static final String MEDIA_TYPE_VIDEO = "video";                  //文件类型
+    public static final String MEDIA_CONTENT = "content";                   //内容
+    public static final String MEDIA_LIKE_COUNT = "likeCount";              //点赞数
+    public static final String MEDIA_COMMENT_COUNT = "commentCount";        //评论数
+    public static final String MEDIA_IS_DELETED = "isDelete";               //话题删除标记
 
     /*评论表相关字段*/
     public static final String TABLE_COMMENT = "Comment";                   //评论表
@@ -52,12 +29,6 @@ public class AVDbManager {
     public static final String COMMENT_CONTENT = "content";                 //评论表-评论内容
     public static final String COMMENT_DATE = "date";                       //时间
     public static final String COMMENT_HAS_DELETED = "isDelete";            //删除标记
-
-    /*关注表相关字段*/
-    public static final String TABLE_ATTENTION = "Attention";               //关注表
-    public static final String ATTENTION_USER = "user";                     //关注用户
-    public static final String ATTENTION_OBSERVED_USER = "observedUser";    //被观察用户
-    public static final String ATTENTION_DELETE_FLAG = "isDelete";             //删除标记
 
     /*点赞表相关字段*/
     public static final String TABLE_LIKE = "Like";                         //点赞表
@@ -73,23 +44,17 @@ public class AVDbManager {
     public static final String MESSAGE_CONTENT = "content";                 //消息表--评论内容
     public static final String MESSAGE_TYPE = "type";                       //消息表--类型 1--评论
 
-    /*收藏表相关字段*/
-    public static final String TABLE_COLLECT = "Collect";                   //个人数据收藏
-    public static final String COLLECT_USER = "user";                       //个人数据收藏 --收藏者
-    public static final String COLLECT_TYPE = "type";                       //收藏 -- 类型
-    public static final String COLLECT_TYPE_COMMUNITY = "community";             //收藏 -- 讨论
-    public static final String COLLECT_TYPE_GOODS = "goods";                     //收藏 -- 商品
-
-    /**
-     * 修改昵称
-     *
-     * @param nick
-     */
-    public static void updateNickAndMale(String nick, String male) {
-        AVUser user = AVUser.getCurrentUser();
-        user.put(USER_NICKE_NAME, nick);
-        user.put(USER_MALE, male);
-        user.saveInBackground();
-    }
+    public static final String TABLE_RESUME = "Resume";                     //简历表
+    public static final String RESUME_NAME = "name";                         //名称
+    public static final String RESUME_SEX = "sex";                           //性别
+    public static final String RESUME_AGE = "age";                           //年龄
+    public static final String RESUME_ADDRESS = "address";                   //地址
+    public static final String RESUME_NUMBER = "number";                     //手机号
+    public static final String RESUME_E_MAIL = "email";                      //邮箱
+    public static final String RESUME_J_START = "jobStart";                  //工作状态
+    public static final String RESUME_INTENTION = "intention";               //求职意向
+    public static final String RESUME_J_ADDRESS = "jobAddress";              //工作地址
+    public static final String RESUME_SALARY = "salary";                     //薪资
+    public static final String RESUME_J_FLAG = "jobFlag";                    //个人表签 (技能项)
 
 }
