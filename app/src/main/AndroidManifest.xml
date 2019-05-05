@@ -26,6 +26,7 @@
         android:theme="@style/MyAppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon,android:theme,android:label">
+        <activity android:name=".featuresAct.EditPartyActivity"></activity>
         <activity android:name=".featuresAct.MusicStudioActivity" />
         <activity android:name=".featuresAct.RecordMusicActivity" />
         <activity android:name=".featuresAct.MyMusicActivity" />
@@ -48,7 +49,7 @@
         <activity android:name=".featuresAct.ResumeDetailsActivity" />
         <activity android:name=".featuresAct.VideoListActivity" />
         <activity android:name=".featuresAct.PlanListActivity" />
-        <activity android:name=".featuresAct.VideoPlayActivity"></activity>
+        <activity android:name=".featuresAct.VideoPlayActivity" />
     </application>
 
 </manifest>

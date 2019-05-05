@@ -1,11 +1,17 @@
 package tech.com.commoncore.avdb;
 
 
+import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.SaveCallback;
+
+import java.io.FileNotFoundException;
+
+import tech.com.commoncore.utils.FileUtils;
+import tech.com.commoncore.utils.ToastUtil;
 
 import static tech.com.commoncore.avdb.AVDbManager.*;
 
@@ -62,12 +68,13 @@ public class AVDbImpl implements AVDb {
     }
 
     @Override
-    public void addPrat(String title, String content, long time, String address, String people, SaveCallback callback) {
+    public void addPrat(String title, String content, long startTime, long endTime, String address, int people, SaveCallback callback) {
         AVObject avObject = new AVObject(TABLE_PARTY);
         avObject.put(PARTY_USER, AVUser.getCurrentUser().getObjectId());
         avObject.put(PARTY_TITLE, title);
         avObject.put(PARTY_CONTENT, content);
-        avObject.put(PARTY_TIME, time);
+        avObject.put(PARTY_START_TIME, startTime);
+        avObject.put(PARTY_END_TIME, endTime);
         avObject.put(PARTY_ADDRESS, address);
         avObject.put(PARTY_PEOPLE, people);
         avObject.put(PARTY_STATUS, STATUS_TYPE_UNSTART);
@@ -75,11 +82,12 @@ public class AVDbImpl implements AVDb {
     }
 
     @Override
-    public void updatePrat(String pratId, String title, String content, long time, String address, String people, SaveCallback callback) {
+    public void updatePrat(String pratId, String title, String content, long startTime, long endTime, String address, int people, SaveCallback callback) {
         AVObject avObject = AVObject.createWithoutData(TABLE_PARTY, pratId);
         avObject.put(PARTY_TITLE, title);
         avObject.put(PARTY_CONTENT, content);
-        avObject.put(PARTY_TIME, time);
+        avObject.put(PARTY_START_TIME, startTime);
+        avObject.put(PARTY_END_TIME, endTime);
         avObject.put(PARTY_ADDRESS, address);
         avObject.put(PARTY_PEOPLE, people);
         avObject.put(PARTY_STATUS, STATUS_TYPE_UNSTART);
@@ -134,6 +142,47 @@ public class AVDbImpl implements AVDb {
     public void requestPlan(String userId, FindCallback<AVObject> findCallback) {
         AVQuery<AVObject> query = new AVQuery<>(TABLE_PLAN);
         query.whereEqualTo(PLAN_USER, AVUser.getCurrentUser().getObjectId());
+        query.findInBackground(findCallback);
+    }
+
+    @Override
+    public AVFile getAVFileByPath(String path) {
+        try {
+            String fileName = FileUtils.splitFileName(path);
+            final AVFile avFile = AVFile.withAbsoluteLocalPath(fileName, path);
+            return avFile;
+        } catch (FileNotFoundException e) {
+            ToastUtil.show("文件未知");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void addFile(String file, int grade, String fileName, String fileType, String content, SaveCallback callback) {
+        AVObject object = new AVObject(TABLE_MEDIA);
+        object.put(MEDIA_USER, AVUser.getCurrentUser().getObjectId());
+        object.put(MEDIA_FILE, file);
+        object.put(MEDIA_GRADE, file);
+        object.put(MEDIA_FILE_NAME, file);
+        object.put(MEDIA_FILE_TYPE, file);
+        object.put(MEDIA_CONTENT, file);
+        object.put(MEDIA_LIKE_COUNT, file);
+        object.put(MEDIA_COMMENT_COUNT, file);
+        object.put(MEDIA_IS_DELETED, file);
+        object.saveInBackground(callback);
+    }
+
+    @Override
+    public void requestFile(FindCallback<AVObject> findCallback) {
+        AVQuery<AVObject> query = new AVQuery<>(TABLE_MEDIA);
+        query.findInBackground(findCallback);
+    }
+
+    @Override
+    public void requestFile(String userId, FindCallback<AVObject> findCallback) {
+        AVQuery<AVObject> query = new AVQuery<>(TABLE_MEDIA);
+        query.whereEqualTo(MEDIA_USER, AVUser.getCurrentUser().getObjectId());
         query.findInBackground(findCallback);
     }
 

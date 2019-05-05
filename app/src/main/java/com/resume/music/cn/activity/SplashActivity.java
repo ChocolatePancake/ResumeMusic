@@ -149,5 +149,4 @@ public class SplashActivity extends BaseTitleActivity {
                 .setBackgroundColor(Color.TRANSPARENT);
     }
 
-
 }

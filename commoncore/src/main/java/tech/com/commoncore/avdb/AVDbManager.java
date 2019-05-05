@@ -12,8 +12,12 @@ public class AVDbManager {
     public static final String STATUS_TYPE_END = "end";
     public static final String STATUS_TYPE_ABANDON = "abandon";
 
+    public static final int GRADE_80_100 = 0;
+    public static final int GRADE_100_150 = 0;
+    public static final int GRADE_150_PULS = 0;
+
     /*多媒体文件表*/
-    public static final String TABLE_MEDIA = "Media";                       //圈子交流表
+    public static final String TABLE_MEDIA = "Media";                       //媒体文件表
     public static final String MEDIA_USER = "user";                         //发表者
     public static final String MEDIA_FILE = "file";                         //文件地址
     public static final String MEDIA_GRADE = "grade";                       //文件等级
@@ -69,7 +73,8 @@ public class AVDbManager {
     public static final String PARTY_USER = "user";                          //用户id
     public static final String PARTY_TITLE = "title";                        //标题
     public static final String PARTY_CONTENT = "content";                    //内容
-    public static final String PARTY_TIME = "time";                          //时间
+    public static final String PARTY_START_TIME = "startTime";               //开始时间
+    public static final String PARTY_END_TIME = "endTime";                   //结束时间
     public static final String PARTY_ADDRESS = "address";                    //地点
     public static final String PARTY_PEOPLE = "people";                      //人数
     public static final String PARTY_STATUS = "status";                      //状态

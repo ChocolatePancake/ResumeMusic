@@ -71,11 +71,12 @@ public class RecordMusicActivity extends BaseTitleActivity {
     }
 
     private void handlerRecordComplete() {
+        showLoading("正在处理中,请勿退出");
         RecordService.getInstance().stopRecord();
         RecordService.getInstance().setTranscodListener(new RecordService.TranscodListener() {
             @Override
             public void start() {
-                showLoading("正在处理中,请勿退出");
+                //showLoading("正在处理中,请勿退出");
             }
 
             @Override

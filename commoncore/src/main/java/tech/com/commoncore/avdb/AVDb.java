@@ -1,5 +1,6 @@
 package tech.com.commoncore.avdb;
 
+import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.SaveCallback;
@@ -16,9 +17,9 @@ public interface AVDb {
 
     void requestResume(String userId, FindCallback<AVObject> findCallback);
 
-    void addPrat(String title, String content, long time, String address, String people, SaveCallback callback);
+    void addPrat(String title, String content, long startTime, long endTime, String address, int people, SaveCallback callback);
 
-    void updatePrat(String pratId, String title, String content, long time, String address, String people, SaveCallback callback);
+    void updatePrat(String pratId, String title, String content, long startTime, long endTime, String address, int people, SaveCallback callback);
 
     void requestPrat(FindCallback<AVObject> findCallback);
 
@@ -31,4 +32,12 @@ public interface AVDb {
     void requestPlan(FindCallback<AVObject> findCallback);
 
     void requestPlan(String userId, FindCallback<AVObject> findCallback);
+
+    AVFile getAVFileByPath(String path);
+
+    void addFile(String file, int grade, String fileName, String fileType, String content, SaveCallback callback);
+
+    void requestFile(FindCallback<AVObject> findCallback);
+
+    void requestFile(String userId, FindCallback<AVObject> findCallback);
 }

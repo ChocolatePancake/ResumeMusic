@@ -22,6 +22,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
+import tech.com.commoncore.avdb.AVGlobal;
 import tech.com.commoncore.base.BaseTitleActivity;
 import tech.com.commoncore.utils.ToastUtil;
 
@@ -82,19 +83,17 @@ public class MyResumeActivity extends BaseTitleActivity {
     }
 
     private void requestData() {
-        AVQuery<AVObject> avQuery = new AVQuery<>(TABLE_RESUME);
-        avQuery.findInBackground(new FindCallback<AVObject>() {
+        AVGlobal.getInstance().getAVImpl().requestResume(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
-                smartRefresh.finishRefresh();
-                if (e == null) {
+                if (e != null) {
+                    ToastUtil.show("请求异常,请检查网络");
+                } else {
                     if (list != null && !list.isEmpty()) {
                         dataAVObjectList = list;
                     } else {
-                        ToastUtil.show("没有找到哦");
+                        ToastUtil.show("您还没有填写简历");
                     }
-                } else {
-                    ToastUtil.show("请求异常,请检查网络");
                 }
                 upDateView();
             }

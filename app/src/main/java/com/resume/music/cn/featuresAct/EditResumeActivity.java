@@ -17,7 +17,7 @@ public class EditResumeActivity extends BaseTitleActivity {
     public void setTitleBar(TitleBarView titleBar) {
         titleBar.setTitleMainText("简历编辑")
                 .setTextColor(Color.WHITE)
-                .setLeftTextDrawable(null)
+                .setLeftTextDrawable(R.mipmap.back_white)
                 .setBgDrawable(getResources().getDrawable(R.drawable.bg_title_gradient))
                 .setStatusBarLightMode(false);
     }
