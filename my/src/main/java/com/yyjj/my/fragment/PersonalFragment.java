@@ -52,20 +52,9 @@ public class PersonalFragment extends BaseFragment {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void setWindowStyle() {
-        Window window = mContext.getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.TRANSPARENT);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void initView(Bundle savedInstanceState) {
-        setWindowStyle();
+        setImmersiveWindowStyle();
         mLlHead = mContentView.findViewById(R.id.ll_head);
         mIvIcon = mContentView.findViewById(R.id.iv_icon);
         mTvNick = mContentView.findViewById(R.id.tv_nick);

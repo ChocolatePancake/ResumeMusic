@@ -72,8 +72,19 @@ public class RecordMusicActivity extends BaseTitleActivity {
 
     private void handlerRecordComplete() {
         RecordService.getInstance().stopRecord();
-        ARouter.getInstance().build(main_musicStudio).navigation();
-        finish();
+        RecordService.getInstance().setTranscodListener(new RecordService.TranscodListener() {
+            @Override
+            public void start() {
+                showLoading("正在处理中,请勿退出");
+            }
+
+            @Override
+            public void end(String url) {
+                hideLoading();
+                ARouter.getInstance().build(main_musicStudio).withString("musicFilePath", url).navigation();
+                finish();
+            }
+        });
     }
 
     private void handlerRecordAgain() {

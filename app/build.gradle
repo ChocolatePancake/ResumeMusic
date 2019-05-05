@@ -70,7 +70,7 @@ android {
         variant.outputs.all { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = "resumemusic.apk"
+                def fileName = "resume_app.apk"
                 outputFileName = fileName
             }
         }

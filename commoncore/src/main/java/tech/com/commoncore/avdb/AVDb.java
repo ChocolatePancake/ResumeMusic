@@ -1,9 +1,34 @@
 package tech.com.commoncore.avdb;
 
-import java.io.File;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.FindCallback;
+import com.avos.avoscloud.SaveCallback;
 
 public interface AVDb {
 
-    void uploadMediaFiles(File file, String alias, String type);
+    void addResume(String name, String sex, int age, String address, String number, String email, String jobStart,
+                   String intention, String jobAddress, String salary, String jobFlag, SaveCallback callback);
 
+    void upDateResume(String resumeId, String name, String sex, int age, String address, String number, String email, String jobStart,
+                      String intention, String jobAddress, String salary, String jobFlag, SaveCallback callback);
+
+    void requestResume(FindCallback<AVObject> findCallback);
+
+    void requestResume(String userId, FindCallback<AVObject> findCallback);
+
+    void addPrat(String title, String content, long time, String address, String people, SaveCallback callback);
+
+    void updatePrat(String pratId, String title, String content, long time, String address, String people, SaveCallback callback);
+
+    void requestPrat(FindCallback<AVObject> findCallback);
+
+    void requestPrat(String userId, FindCallback<AVObject> findCallback);
+
+    void addPlan(String type, String title, String content, long sTime, long eTime, String status, SaveCallback callback);
+
+    void updatePlan(String planId, String type, String title, String content, long sTime, long eTime, String status, SaveCallback callback);
+
+    void requestPlan(FindCallback<AVObject> findCallback);
+
+    void requestPlan(String userId, FindCallback<AVObject> findCallback);
 }

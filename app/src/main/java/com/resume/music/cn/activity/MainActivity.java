@@ -12,9 +12,9 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.resume.music.cn.R;
 import com.resume.music.cn.entity.TabEntity;
-import com.resume.music.cn.fragment.MonadFragment;
-import com.resume.music.cn.fragment.RecordingFragment;
-import com.resume.music.cn.fragment.VideoFragment;
+import com.resume.music.cn.fragment.PartFragment;
+import com.resume.music.cn.fragment.HomeFragment;
+import com.resume.music.cn.fragment.ResumeFragment;
 import com.vise.xsnow.event.IEvent;
 import com.vise.xsnow.event.Subscribe;
 
@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
     private FragmentTransaction mTransaction;
     private int mCurrentIndex;
 
-    private String[] mTitles = {"首页", "功能", "发现", "我的"};
+    private String[] mTitles = {"首页", "简历", "发现", "我的"};
     private int[] mIconUnSelectIds = {
             R.mipmap.icon_tab_un_home,
             R.mipmap.icon_tab_un_optional,
@@ -176,7 +176,7 @@ public class MainActivity extends BaseActivity {
     /*第一个tab*/
     private void showFirstFragment() {
         if (mainFirstFragment == null) {
-            mainFirstFragment = RecordingFragment.newInstance();
+            mainFirstFragment = HomeFragment.newInstance();
             mTransaction.add(R.id.fl_main_content, mainFirstFragment, TAG_F_FIRST);
         } else {
             mTransaction.show(mainFirstFragment);
@@ -186,7 +186,7 @@ public class MainActivity extends BaseActivity {
     /*第二个tab*/
     private void showSecondFragment() {
         if (mainSecondFragment == null) {
-            mainSecondFragment = VideoFragment.newInstance();
+            mainSecondFragment = ResumeFragment.newInstance();
             mTransaction.add(R.id.fl_main_content, mainSecondFragment, TAG_F_THIRD);
         } else {
             mTransaction.show(mainSecondFragment);
@@ -196,7 +196,7 @@ public class MainActivity extends BaseActivity {
     /*第三个tab*/
     private void showThirdFragment() {
         if (mainThirdFragment == null) {
-            mainThirdFragment = MonadFragment.newInstance();
+            mainThirdFragment = PartFragment.newInstance();
             mTransaction.add(R.id.fl_main_content, mainThirdFragment, TAG_F_SECOND);
         } else {
             mTransaction.show(mainThirdFragment);
@@ -260,4 +260,6 @@ public class MainActivity extends BaseActivity {
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
     }
+
+
 }

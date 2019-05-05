@@ -7,10 +7,16 @@ public class AVDbManager {
     public static final String USER_SIGN = "sign";                          //个性签名
     public static final String USER_HEAD_ICON = "icon";                     //头像
 
+    public static final String STATUS_TYPE_UNSTART = "unStatus";
+    public static final String STATUS_TYPE_ING = "ing";
+    public static final String STATUS_TYPE_END = "end";
+    public static final String STATUS_TYPE_ABANDON = "abandon";
+
     /*多媒体文件表*/
     public static final String TABLE_MEDIA = "Media";                       //圈子交流表
     public static final String MEDIA_USER = "user";                         //发表者
     public static final String MEDIA_FILE = "file";                         //文件地址
+    public static final String MEDIA_GRADE = "grade";                       //文件等级
     public static final String MEDIA_FILE_NAME = "fileName";                //文件别名
     public static final String MEDIA_FILE_TYPE = "fileType";                //文件类型
     public static final String MEDIA_TYPE_MUSIC = "music";                  //文件类型
@@ -44,7 +50,9 @@ public class AVDbManager {
     public static final String MESSAGE_CONTENT = "content";                 //消息表--评论内容
     public static final String MESSAGE_TYPE = "type";                       //消息表--类型 1--评论
 
-    public static final String TABLE_RESUME = "Resume";                     //简历表
+    /*简历表*/
+    public static final String TABLE_RESUME = "Resume";                      //简历表
+    public static final String RESUME_USER = "user";                         //名称
     public static final String RESUME_NAME = "name";                         //名称
     public static final String RESUME_SEX = "sex";                           //性别
     public static final String RESUME_AGE = "age";                           //年龄
@@ -56,5 +64,23 @@ public class AVDbManager {
     public static final String RESUME_J_ADDRESS = "jobAddress";              //工作地址
     public static final String RESUME_SALARY = "salary";                     //薪资
     public static final String RESUME_J_FLAG = "jobFlag";                    //个人表签 (技能项)
+
+    public static final String TABLE_PARTY = "Party";                        //活动表
+    public static final String PARTY_USER = "user";                          //用户id
+    public static final String PARTY_TITLE = "title";                        //标题
+    public static final String PARTY_CONTENT = "content";                    //内容
+    public static final String PARTY_TIME = "time";                          //时间
+    public static final String PARTY_ADDRESS = "address";                    //地点
+    public static final String PARTY_PEOPLE = "people";                      //人数
+    public static final String PARTY_STATUS = "status";                      //状态
+
+    public static final String TABLE_PLAN = "Plan";                          //策划表
+    public static final String PLAN_USER = "user";                           //用户
+    public static final String PLAN_TYPE = "type";                           //类型
+    public static final String PLAN_TITLE = "title";                         //标题
+    public static final String PLAN_CONTENT = "content";                     //内容
+    public static final String PLAN_START_TIME = "startTime";                //策划表
+    public static final String PLAN_END_TIME = "endTime";                    //开始时间
+    public static final String PLAN_STATUS = "status";                      //状态
 
 }

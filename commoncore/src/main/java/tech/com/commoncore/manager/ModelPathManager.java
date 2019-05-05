@@ -20,4 +20,12 @@ public class ModelPathManager {
     public final static String main_recordVideo = "/main/recordVideo";
     public final static String main_recordMusic = "/main/recordMusic";
     public final static String main_musicStudio = "/main/musicStudio";
+    public final static String main_musicList = "/main/musicList";
+    public final static String main_myResumeList = "/main/myResume";
+    public final static String main_videoList = "/main/videoList";
+    public final static String main_planList = "/main/planList";
+    public final static String main_myPlanList = "/main/myPlanList";
+    public final static String main_myPartList = "/main/myPartList";
+    public final static String main_editResume = "/main/editResume";
+
 }

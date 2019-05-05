@@ -24,6 +24,12 @@ public class RecordService {
     private static RecordService recordService;
     private static final String TAG = "PWDebug";
 
+    private TranscodListener transcodListener;
+
+    public void setTranscodListener(TranscodListener transcodListener) {
+        this.transcodListener = transcodListener;
+    }
+
     public static RecordService getInstance() {
         synchronized (RecordService.class) {
             if (recordService == null) {
@@ -98,7 +104,13 @@ public class RecordService {
                     }
                     try {
                         fos.close();
+                        if (transcodListener != null) {
+                            transcodListener.start();
+                        }
                         pcmToWav();
+                        if (transcodListener != null) {
+                            transcodListener.end(wavFileName);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -120,6 +132,7 @@ public class RecordService {
             wavFile.delete();
         }
         pcmToWavUtil.pcmToWav(pcmFile.getAbsolutePath(), wavFile.getAbsolutePath());
+
     }
 
     public void stopRecord() {
@@ -179,6 +192,13 @@ public class RecordService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static abstract class TranscodListener {
+
+        public abstract void start();
+
+        public abstract void end(String url);
     }
 
 }

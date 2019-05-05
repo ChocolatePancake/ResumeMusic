@@ -4,9 +4,11 @@ import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -65,8 +67,10 @@ public class RecordVideoActivity extends BaseActivity implements View.OnClickLis
         return R.layout.activity_record_aideo;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void initView(Bundle savedInstanceState) {
+        setImmersiveWindowStyle();
         surfaceView = findViewById(R.id.record_surfaceView);
         mRecordControl = findViewById(R.id.record_control);
         mRecordTime = findViewById(R.id.record_time);
