@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".featuresAct.EditPartyActivity">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edit_party_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="活动主题" />
+
+            <EditText
+                android:id="@+id/edit_party_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="活动内容以及事项" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/edit_party_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="开始时间"
+                    android:textColor="@color/text_content" />
+
+                <TextView
+                    android:id="@+id/edit_party_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="结束时间"
+                    android:textColor="@color/text_content" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edit_party_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="地址" />
+
+            <EditText
+                android:id="@+id/edit_party_people"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="参与人数"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/edit_party_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发布" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
