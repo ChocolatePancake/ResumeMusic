@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".featuresAct.EditPartyActivity">
+    tools:context=".featuresAct.EditPlanActivity">
 
     <include layout="@layout/layout_title_bar" />
 
@@ -20,10 +20,10 @@
             android:padding="@dimen/dp_12">
 
             <EditText
-                android:id="@+id/edit_party_title"
+                android:id="@+id/edit_plan_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="活动主题"
+                android:hint="策划主题"
                 android:textColor="@color/text_content"
                 android:textSize="@dimen/sp_14" />
 
@@ -33,12 +33,12 @@
                 android:background="@drawable/bg_edit_content">
 
                 <EditText
-                    android:id="@+id/edit_party_content"
+                    android:id="@+id/edit_plan_content"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:gravity="top|left"
-                    android:hint="活动内容以及事项"
+                    android:gravity="left|top"
+                    android:hint="策划内容以及具体事项"
                     android:padding="@dimen/dp_8"
                     android:textColor="@color/text_content"
                     android:textSize="@dimen/sp_14" />
@@ -48,13 +48,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_12"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/dp_12"
                 android:paddingRight="@dimen/dp_12">
 
                 <TextView
-                    android:id="@+id/edit_party_start_time"
+                    android:id="@+id/edit_plan_start_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -63,7 +63,7 @@
                     android:textSize="@dimen/sp_14" />
 
                 <TextView
-                    android:id="@+id/edit_party_end_time"
+                    android:id="@+id/edit_plan_end_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -73,29 +73,8 @@
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/edit_party_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
-                android:hint="地址"
-                android:textColor="@color/text_content"
-                android:textColorHint="@color/text_hint"
-                android:textSize="@dimen/sp_14" />
-
-            <EditText
-                android:id="@+id/edit_party_people"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
-                android:hint="参与人数"
-                android:inputType="number"
-                android:textColor="@color/text_content"
-                android:textColorHint="@color/text_hint"
-                android:textSize="@dimen/sp_14" />
-
             <Button
-                android:id="@+id/edit_party_submit"
+                android:id="@+id/edit_plan_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_26"

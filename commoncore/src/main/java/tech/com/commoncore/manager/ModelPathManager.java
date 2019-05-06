@@ -28,5 +28,6 @@ public class ModelPathManager {
     public final static String main_myPartList = "/main/myPartList";
     public final static String main_editResume = "/main/editResume";
     public final static String main_editParty = "/main/editParty";
+    public final static String main_editPlan = "/main/editPlan";
 
 }

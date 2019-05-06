@@ -1,5 +1,6 @@
 package com.resume.music.cn.featuresAct;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.resume.music.cn.R;
 
 import tech.com.commoncore.avdb.AVGlobal;
 import tech.com.commoncore.base.BaseTitleActivity;
+import tech.com.commoncore.plog;
 import tech.com.commoncore.utils.FileUtils;
 import tech.com.commoncore.utils.ToastUtil;
 
@@ -26,13 +28,18 @@ public class MusicStudioActivity extends BaseTitleActivity implements View.OnCli
     private EditText nameEt, contentEt;
 
     private String filePath = "";
+    private String fileName = "";
     private int grade = 0;
     private String name = "";
     private String content = "";
 
     @Override
     public void setTitleBar(TitleBarView titleBar) {
-
+        titleBar.setTitleMainText("音乐上传")
+                .setTextColor(Color.WHITE)
+                .setLeftTextDrawable(R.mipmap.back_white)
+                .setBgColor(getResources().getColor(R.color.colorStudioBg))
+                .setStatusBarLightMode(false);
     }
 
     @Override
@@ -42,11 +49,15 @@ public class MusicStudioActivity extends BaseTitleActivity implements View.OnCli
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        nameEt = findViewById(R.id.music_studio_name_ed);
+        contentEt = findViewById(R.id.music_studio_content_ed);
         findViewById(R.id.music_studio_again).setOnClickListener(this);
         findViewById(R.id.music_studio_upload).setOnClickListener(this);
         findViewById(R.id.music_studio_save).setOnClickListener(this);
 
         filePath = getIntent().getStringExtra("musicFilePath");
+        fileName = getIntent().getStringExtra("musicFileName");
+        plog.paly("路径:" + filePath + "   名称:" + fileName);
         grade = getIntent().getIntExtra("musicGrade", GRADE_80_100);
     }
 
@@ -72,8 +83,15 @@ public class MusicStudioActivity extends BaseTitleActivity implements View.OnCli
     }
 
     private void handlerMusicUpload() {
+        name = nameEt.getText().toString();
+        content = contentEt.getText().toString();
+        if (name.isEmpty()) {
+            ToastUtil.show("音乐名不能为空");
+            return;
+        }
+
         showLoading();
-        final AVFile avFile = AVGlobal.getInstance().getAVImpl().getAVFileByPath(filePath);
+        final AVFile avFile = AVGlobal.getInstance().getAVImpl().getAVFileByPath(filePath, fileName);
         avFile.saveInBackground(new SaveCallback() {
             @Override
             public void done(AVException e) {
@@ -87,6 +105,8 @@ public class MusicStudioActivity extends BaseTitleActivity implements View.OnCli
                             hideLoading();
                             if (e == null) {
                                 ToastUtil.show("上传完毕");
+                            } else {
+                                ToastUtil.show("上传失败,请检查网络后重试");
                             }
                         }
                     });

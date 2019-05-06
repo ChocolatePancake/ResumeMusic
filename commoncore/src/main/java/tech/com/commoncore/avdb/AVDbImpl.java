@@ -9,6 +9,7 @@ import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.SaveCallback;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 
 import tech.com.commoncore.utils.FileUtils;
 import tech.com.commoncore.utils.ToastUtil;
@@ -68,7 +69,7 @@ public class AVDbImpl implements AVDb {
     }
 
     @Override
-    public void addPrat(String title, String content, long startTime, long endTime, String address, int people, SaveCallback callback) {
+    public void addPrat(String title, String content, String startTime, String endTime, String address, int people, SaveCallback callback) {
         AVObject avObject = new AVObject(TABLE_PARTY);
         avObject.put(PARTY_USER, AVUser.getCurrentUser().getObjectId());
         avObject.put(PARTY_TITLE, title);
@@ -78,11 +79,12 @@ public class AVDbImpl implements AVDb {
         avObject.put(PARTY_ADDRESS, address);
         avObject.put(PARTY_PEOPLE, people);
         avObject.put(PARTY_STATUS, STATUS_TYPE_UNSTART);
+        avObject.put(TARGET_AVUSER, AVObject.createWithoutData("_User", AVUser.getCurrentUser().getObjectId()));
         avObject.saveInBackground(callback);
     }
 
     @Override
-    public void updatePrat(String pratId, String title, String content, long startTime, long endTime, String address, int people, SaveCallback callback) {
+    public void updatePrat(String pratId, String title, String content, String startTime, String endTime, String address, int people, SaveCallback callback) {
         AVObject avObject = AVObject.createWithoutData(TABLE_PARTY, pratId);
         avObject.put(PARTY_TITLE, title);
         avObject.put(PARTY_CONTENT, content);
@@ -97,6 +99,7 @@ public class AVDbImpl implements AVDb {
     @Override
     public void requestPrat(FindCallback<AVObject> findCallback) {
         AVQuery<AVObject> query = new AVQuery<>(TABLE_PARTY);
+        query.include(TARGET_AVUSER);
         query.findInBackground(findCallback);
     }
 
@@ -108,20 +111,20 @@ public class AVDbImpl implements AVDb {
     }
 
     @Override
-    public void addPlan(String type, String title, String content, long sTime, long eTime, String status, SaveCallback callback) {
+    public void addPlan(String title, String content, String sTime, String eTime, String status, SaveCallback callback) {
         AVObject avObject = new AVObject(TABLE_PLAN);
         avObject.put(PLAN_USER, AVUser.getCurrentUser().getObjectId());
-        avObject.put(PLAN_TYPE, type);
         avObject.put(PLAN_TITLE, title);
         avObject.put(PLAN_CONTENT, content);
         avObject.put(PLAN_START_TIME, sTime);
         avObject.put(PLAN_END_TIME, eTime);
         avObject.put(PLAN_STATUS, status);
+        avObject.put(TARGET_AVUSER, AVObject.createWithoutData("_User", AVUser.getCurrentUser().getObjectId()));
         avObject.saveInBackground(callback);
     }
 
     @Override
-    public void updatePlan(String planId, String type, String title, String content, long sTime, long eTime, String status, SaveCallback callback) {
+    public void updatePlan(String planId, String type, String title, String content, String sTime, String eTime, String status, SaveCallback callback) {
         AVObject avObject = AVObject.createWithoutData(TABLE_PLAN, planId);
         avObject.put(PLAN_TYPE, type);
         avObject.put(PLAN_TITLE, title);
@@ -135,6 +138,7 @@ public class AVDbImpl implements AVDb {
     @Override
     public void requestPlan(FindCallback<AVObject> findCallback) {
         AVQuery<AVObject> query = new AVQuery<>(TABLE_PLAN);
+        query.include(TARGET_AVUSER);
         query.findInBackground(findCallback);
     }
 
@@ -142,14 +146,14 @@ public class AVDbImpl implements AVDb {
     public void requestPlan(String userId, FindCallback<AVObject> findCallback) {
         AVQuery<AVObject> query = new AVQuery<>(TABLE_PLAN);
         query.whereEqualTo(PLAN_USER, AVUser.getCurrentUser().getObjectId());
+        query.include(TARGET_AVUSER);
         query.findInBackground(findCallback);
     }
 
     @Override
-    public AVFile getAVFileByPath(String path) {
+    public AVFile getAVFileByPath(String path, String fileName) {
         try {
-            String fileName = FileUtils.splitFileName(path);
-            final AVFile avFile = AVFile.withAbsoluteLocalPath(fileName, path);
+            final AVFile avFile = AVFile.withAbsoluteLocalPath(fileName, path + "/" + fileName);
             return avFile;
         } catch (FileNotFoundException e) {
             ToastUtil.show("文件未知");
@@ -163,27 +167,38 @@ public class AVDbImpl implements AVDb {
         AVObject object = new AVObject(TABLE_MEDIA);
         object.put(MEDIA_USER, AVUser.getCurrentUser().getObjectId());
         object.put(MEDIA_FILE, file);
-        object.put(MEDIA_GRADE, file);
-        object.put(MEDIA_FILE_NAME, file);
-        object.put(MEDIA_FILE_TYPE, file);
-        object.put(MEDIA_CONTENT, file);
-        object.put(MEDIA_LIKE_COUNT, file);
-        object.put(MEDIA_COMMENT_COUNT, file);
-        object.put(MEDIA_IS_DELETED, file);
+        object.put(MEDIA_GRADE, grade);
+        object.put(MEDIA_FILE_NAME, fileName);
+        object.put(MEDIA_FILE_TYPE, fileType);
+        object.put(MEDIA_CONTENT, content);
+        object.put(MEDIA_LIKE_COUNT, 0);
+        object.put(MEDIA_COMMENT_COUNT, 0);
+        object.put(MEDIA_IS_DELETED, 0);
+        object.put(TARGET_AVUSER, AVObject.createWithoutData("_User", AVUser.getCurrentUser().getObjectId()));
         object.saveInBackground(callback);
     }
 
     @Override
-    public void requestFile(FindCallback<AVObject> findCallback) {
-        AVQuery<AVObject> query = new AVQuery<>(TABLE_MEDIA);
+    public void requestFile(String fileType, int grade, FindCallback<AVObject> findCallback) {
+        AVQuery<AVObject> typeQuery = new AVQuery<>(TABLE_MEDIA);
+        typeQuery.whereEqualTo(MEDIA_FILE_TYPE, fileType);
+        AVQuery<AVObject> gradeQuery = new AVQuery<>(TABLE_MEDIA);
+        gradeQuery.whereEqualTo(MEDIA_GRADE, grade);
+
+        AVQuery<AVObject> query = AVQuery.and(Arrays.asList(typeQuery, gradeQuery));
+        query.include(TARGET_AVUSER);
         query.findInBackground(findCallback);
     }
 
     @Override
-    public void requestFile(String userId, FindCallback<AVObject> findCallback) {
-        AVQuery<AVObject> query = new AVQuery<>(TABLE_MEDIA);
-        query.whereEqualTo(MEDIA_USER, AVUser.getCurrentUser().getObjectId());
+    public void requestFile(String userId, String fileType, FindCallback<AVObject> findCallback) {
+        AVQuery<AVObject> typeQuery = new AVQuery<>(TABLE_MEDIA);
+        typeQuery.whereEqualTo(MEDIA_FILE_TYPE, fileType);
+        AVQuery<AVObject> userQuery = new AVQuery<>(TABLE_MEDIA);
+        userQuery.whereEqualTo(MEDIA_USER, AVUser.getCurrentUser().getObjectId());
+
+        AVQuery<AVObject> query = AVQuery.and(Arrays.asList(typeQuery, userQuery));
+        query.include(TARGET_AVUSER);
         query.findInBackground(findCallback);
     }
-
 }

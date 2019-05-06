@@ -11,6 +11,7 @@ import com.aries.ui.view.title.TitleBarView;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.resume.music.cn.R;
 import com.resume.music.cn.adapter.PartAdapter;
@@ -20,10 +21,15 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
+import tech.com.commoncore.avdb.AVGlobal;
 import tech.com.commoncore.base.BaseTitleFragment;
+import tech.com.commoncore.plog;
 import tech.com.commoncore.utils.ToastUtil;
 
+import static tech.com.commoncore.avdb.AVDbManager.PARTY_USER;
 import static tech.com.commoncore.avdb.AVDbManager.TABLE_RESUME;
+import static tech.com.commoncore.avdb.AVDbManager.TARGET_AVUSER;
+import static tech.com.commoncore.avdb.AVDbManager.USER_NICK_NAME;
 
 public class PartFragment extends BaseTitleFragment {
     private SmartRefreshLayout smartRefresh;
@@ -76,8 +82,7 @@ public class PartFragment extends BaseTitleFragment {
     }
 
     private void requestData() {
-        AVQuery<AVObject> avQuery = new AVQuery<>(TABLE_RESUME);
-        avQuery.findInBackground(new FindCallback<AVObject>() {
+        AVGlobal.getInstance().getAVImpl().requestPrat(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 smartRefresh.finishRefresh();

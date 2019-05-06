@@ -12,6 +12,7 @@ import com.resume.music.cn.R;
 import com.resume.music.cn.recordingModel.RecordService;
 
 import tech.com.commoncore.base.BaseTitleActivity;
+import tech.com.commoncore.plog;
 
 import static tech.com.commoncore.manager.ModelPathManager.main_musicStudio;
 import static tech.com.commoncore.manager.ModelPathManager.main_recordMusic;
@@ -71,21 +72,29 @@ public class RecordMusicActivity extends BaseTitleActivity {
     }
 
     private void handlerRecordComplete() {
-        showLoading("正在处理中,请勿退出");
-        RecordService.getInstance().stopRecord();
-        RecordService.getInstance().setTranscodListener(new RecordService.TranscodListener() {
+        RecordService.getInstance().setTranslationListener(new RecordService.TranslationListener() {
             @Override
             public void start() {
-                //showLoading("正在处理中,请勿退出");
+                showLoading("正在处理中,请勿退出");
             }
 
             @Override
-            public void end(String url) {
+            public void end(String path, String fileName) {
                 hideLoading();
-                ARouter.getInstance().build(main_musicStudio).withString("musicFilePath", url).navigation();
+                ARouter.getInstance().build(main_musicStudio)
+                        .withString("musicFilePath", path)
+                        .withString("musicFileName", fileName)
+                        .navigation();
                 finish();
             }
+
+            @Override
+            public void error() {
+                hideLoading();
+                showLoading("处理出错,请重试");
+            }
         });
+        RecordService.getInstance().stopRecord();
     }
 
     private void handlerRecordAgain() {

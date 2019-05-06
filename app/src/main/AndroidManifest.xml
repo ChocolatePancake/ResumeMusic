@@ -26,7 +26,8 @@
         android:theme="@style/MyAppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon,android:theme,android:label">
-        <activity android:name=".featuresAct.EditPartyActivity"></activity>
+        <activity android:name=".featuresAct.EditPlanActivity"></activity>
+        <activity android:name=".featuresAct.EditPartyActivity" />
         <activity android:name=".featuresAct.MusicStudioActivity" />
         <activity android:name=".featuresAct.RecordMusicActivity" />
         <activity android:name=".featuresAct.MyMusicActivity" />

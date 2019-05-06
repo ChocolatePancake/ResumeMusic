@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".featuresAct.MusicStudioActivity">
 
+    <include layout="@layout/layout_title_bar" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,22 +18,99 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@color/colorStudioCBg"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/music_studio_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ProgressBar
-                android:id="@+id/music_studio_progress"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="@dimen/dp_64"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp_18"
+                android:paddingRight="@dimen/dp_18">
 
-            <TextView
-                android:id="@+id/music_studio_timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="音乐名 :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_16" />
+
+                <EditText
+                    android:id="@+id/music_studio_name_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="输入音乐名"
+                    android:maxLength="16"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="@dimen/sp_16" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorStudioCBg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_100"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp_18"
+                    android:paddingRight="@dimen/dp_18">
+
+                    <EditText
+                        android:id="@+id/music_studio_content_ed"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="top|left"
+                        android:hint="描述你的故事"
+                        android:maxLength="16"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/sp_16" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_12">
+
+                <ImageView
+                    android:id="@+id/music_studio_switch"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/icon_music_play" />
+
+                <ProgressBar
+                    android:id="@+id/music_studio_progress"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_6"
+                    android:layout_marginRight="@dimen/dp_6"
+                    android:layout_weight="1"
+                    android:outlineAmbientShadowColor="@color/text_hint"
+                    android:outlineSpotShadowColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/music_studio_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="02:45"
+                    android:textColor="@color/text_hint" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

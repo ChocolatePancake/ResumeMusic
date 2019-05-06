@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.aries.ui.view.title.TitleBarView;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -24,6 +25,8 @@ import tech.com.commoncore.avdb.AVGlobal;
 import tech.com.commoncore.base.BaseTitleActivity;
 import tech.com.commoncore.manager.ModelPathManager;
 import tech.com.commoncore.utils.ToastUtil;
+
+import static tech.com.commoncore.manager.ModelPathManager.main_editParty;
 
 /**
  * 我的活动
@@ -48,7 +51,7 @@ public class MyPartyActivity extends BaseTitleActivity {
                 .setOnRightTextClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        ARouter.getInstance().build(main_editParty).navigation();
                     }
                 });
     }
@@ -80,7 +83,7 @@ public class MyPartyActivity extends BaseTitleActivity {
     }
 
     private void requestData() {
-        AVGlobal.getInstance().getAVImpl().requestResume(new FindCallback<AVObject>() {
+        AVGlobal.getInstance().getAVImpl().requestPrat(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 smartRefresh.finishRefresh();

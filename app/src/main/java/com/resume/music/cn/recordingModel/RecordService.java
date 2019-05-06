@@ -7,6 +7,8 @@ import android.media.AudioRecord;
 import android.media.AudioTrack;
 import android.media.MediaRecorder;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
@@ -24,10 +26,10 @@ public class RecordService {
     private static RecordService recordService;
     private static final String TAG = "PWDebug";
 
-    private TranscodListener transcodListener;
+    private TranslationListener translationListener;
 
-    public void setTranscodListener(TranscodListener transcodListener) {
-        this.transcodListener = transcodListener;
+    public void setTranslationListener(TranslationListener translationListener) {
+        this.translationListener = translationListener;
     }
 
     public static RecordService getInstance() {
@@ -38,6 +40,26 @@ public class RecordService {
             return recordService;
         }
     }
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (translationListener != null) {
+                switch (msg.what) {
+                    case 10085:
+                        translationListener.start();
+                        break;
+                    case 10086:
+                        translationListener.end(path, wavFileName);
+                        break;
+                    case 10087:
+                        translationListener.error();
+                        break;
+                }
+            }
+        }
+    };
 
     /**
      * 采样率，现在能够保证在所有设备上使用的采样率是44100Hz, 但是其他的采样率（22050, 16000, 11025）在一些设备上也可以使用。
@@ -104,13 +126,9 @@ public class RecordService {
                     }
                     try {
                         fos.close();
-                        if (transcodListener != null) {
-                            transcodListener.start();
-                        }
+                        handler.sendEmptyMessage(10085);
                         pcmToWav();
-                        if (transcodListener != null) {
-                            transcodListener.end(wavFileName);
-                        }
+                        handler.sendEmptyMessage(10086);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -132,7 +150,6 @@ public class RecordService {
             wavFile.delete();
         }
         pcmToWavUtil.pcmToWav(pcmFile.getAbsolutePath(), wavFile.getAbsolutePath());
-
     }
 
     public void stopRecord() {
@@ -194,11 +211,13 @@ public class RecordService {
         }
     }
 
-    public static abstract class TranscodListener {
+    public static abstract class TranslationListener {
 
         public abstract void start();
 
-        public abstract void end(String url);
+        public abstract void end(String path, String fileName);
+
+        public abstract void error();
     }
 
 }

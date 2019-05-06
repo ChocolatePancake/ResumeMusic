@@ -13,8 +13,10 @@ public class AVDbManager {
     public static final String STATUS_TYPE_ABANDON = "abandon";
 
     public static final int GRADE_80_100 = 0;
-    public static final int GRADE_100_150 = 0;
-    public static final int GRADE_150_PULS = 0;
+    public static final int GRADE_100_150 = 1;
+    public static final int GRADE_150_PULS = 2;
+
+    public static final String TARGET_AVUSER = "targetAVUser";
 
     /*多媒体文件表*/
     public static final String TABLE_MEDIA = "Media";                       //媒体文件表
@@ -84,8 +86,8 @@ public class AVDbManager {
     public static final String PLAN_TYPE = "type";                           //类型
     public static final String PLAN_TITLE = "title";                         //标题
     public static final String PLAN_CONTENT = "content";                     //内容
-    public static final String PLAN_START_TIME = "startTime";                //策划表
-    public static final String PLAN_END_TIME = "endTime";                    //开始时间
-    public static final String PLAN_STATUS = "status";                      //状态
+    public static final String PLAN_START_TIME = "startTime";                //开始时间
+    public static final String PLAN_END_TIME = "endTime";                    //结束时间
+    public static final String PLAN_STATUS = "status";                       //状态
 
 }
