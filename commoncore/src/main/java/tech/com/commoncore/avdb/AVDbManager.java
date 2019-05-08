@@ -57,19 +57,43 @@ public class AVDbManager {
     public static final String MESSAGE_TYPE = "type";                       //消息表--类型 1--评论
 
     /*简历表*/
+    //基本信息
     public static final String TABLE_RESUME = "Resume";                      //简历表
-    public static final String RESUME_USER = "user";                         //名称
+    public static final String RESUME_USER = "user";                         //用户id
+    public static final String RESUME_HEAD = "head";                         //头像
     public static final String RESUME_NAME = "name";                         //名称
     public static final String RESUME_SEX = "sex";                           //性别
     public static final String RESUME_AGE = "age";                           //年龄
-    public static final String RESUME_ADDRESS = "address";                   //地址
+    public static final String RESUME_HOME_ADDRESS = "homeAddress";          //地址
     public static final String RESUME_NUMBER = "number";                     //手机号
     public static final String RESUME_E_MAIL = "email";                      //邮箱
-    public static final String RESUME_J_START = "jobStart";                  //工作状态
+    public static final String RESUME_JOB_AGE = "jobAge";                    //工作年龄
+    public static final String RESUME_JOB_STATUS = "jobStatus";              //工作状态
+    public static final String RESUME_CARD_NUMBER = "cardNumber";            //证件号
+    public static final String RESUME_NATIONALITY = "nationality";           //国籍/户口
+    public static final String RESUME_MARRIAGE = "marriage";                 //婚姻状况
+    //求职意向
     public static final String RESUME_INTENTION = "intention";               //求职意向
-    public static final String RESUME_J_ADDRESS = "jobAddress";              //工作地址
-    public static final String RESUME_SALARY = "salary";                     //薪资
-    public static final String RESUME_J_FLAG = "jobFlag";                    //个人表签 (技能项)
+    public static final String RESUME_JOB_ADDRESS = "jobAddress";            //工作地址
+    public static final String RESUME_SALARY = "salary";                     //薪资范围
+    public static final String RESUME_JOB_FLAG = "jobFlag";                  //个人表签 (技能项)
+    //教育经历
+    public static final String RESUME_SCHOOL = "school";                     //毕业院校
+    public static final String RESUME_DISCIPLINE = "discipline";             //大学专业
+    public static final String RESUME_EDUCATION = "education";               //学历
+    public static final String RESUME_SCHOOL_START_TIME = "schoolStartTime"; //开始时间
+    public static final String RESUME_SCHOOL_END_TIME = "schoolEndTime";     //结束时间
+    //工作经历
+    public static final String RESUME_COMPANY = "company";                     //公司名称
+    public static final String RESUME_POSITION = "position";                   //所处职位
+    public static final String RESUME_JOB_START_TIME = "jobStartTime";         //开始时间
+    public static final String RESUME_JOB_END_TIME = "jobEndTime";             //结束时间
+    //项目经历
+    public static final String RESUME_PROJECT_NAME = "projectName";             //项目名称
+    public static final String RESUME_COMPANY_NAME = "companyName";             //开始时间
+    public static final String RESUME_PROJECT_DESCRIPTION = "projectDescription";//项目描述
+    public static final String RESUME_PROJECT_START_TIME = "projectStartTime";   //开始时间
+    public static final String RESUME_PROJECT_END_TIME = "projectEndTime";       //结束时间
 
     public static final String TABLE_PARTY = "Party";                        //活动表
     public static final String PARTY_USER = "user";                          //用户id

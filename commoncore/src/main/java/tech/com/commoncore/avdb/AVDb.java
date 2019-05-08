@@ -7,11 +7,21 @@ import com.avos.avoscloud.SaveCallback;
 
 public interface AVDb {
 
-    void addResume(String name, String sex, int age, String address, String number, String email, String jobStart,
-                   String intention, String jobAddress, String salary, String jobFlag, SaveCallback callback);
+    void addResume(String head, String name, String sex, int age, String homeAddress, String number,
+                   String email, int jobAge, String jobStatus, String cardNumber, String nationality,
+                   String marriage, String intention, String jobAddress, String salary, String jobFlag,
+                   String school, String discipline, String education, String schoolStartTime, String schoolEndTime,
+                   String company, String position, String jobStartTime, String jobEndTime, String projectName,
+                   String companyName, String projectDescription, String projectStartTime,
+                   String projectEndTime, SaveCallback callback);
 
-    void upDateResume(String resumeId, String name, String sex, int age, String address, String number, String email, String jobStart,
-                      String intention, String jobAddress, String salary, String jobFlag, SaveCallback callback);
+    void upDateResume(String resumeId, String head, String name, String sex, int age, String homeAddress, String number,
+                      String email, int jobAge, String jobStatus, String cardNumber, String nationality,
+                      String marriage, String intention, String jobAddress, String salary, String jobFlag,
+                      String school, String discipline, String education, String schoolStartTime, String schoolEndTime,
+                      String company, String position, String jobStartTime, String jobEndTime, String projectName,
+                      String companyName, String projectDescription, String projectStartTime,
+                      String projectEndTime, SaveCallback callback);
 
     void requestResume(FindCallback<AVObject> findCallback);
 
@@ -39,5 +49,5 @@ public interface AVDb {
 
     void requestFile(String fileType, int grade, FindCallback<AVObject> findCallback);
 
-    void requestFile(String userId, String fileType,FindCallback<AVObject> findCallback);
+    void requestFile(String userId, String fileType, FindCallback<AVObject> findCallback);
 }

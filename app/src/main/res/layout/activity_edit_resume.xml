@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".featuresAct.EditResumeActivity">
 
@@ -12,7 +13,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EEEEEE">
+        android:background="#ffffff">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,9 +21,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/edit_resume_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="基本信息"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/sp_16" />
 
@@ -31,20 +34,480 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_10"
+                android:divider="@drawable/divider_resume_edit"
                 android:orientation="vertical"
-                android:padding="@dimen/dp_10">
+                android:padding="@dimen/dp_10"
+                android:showDividers="middle">
 
-                <include layout="@layout/layout_resume_basic_information" />
+                <ImageView
+                    android:id="@+id/resume_edit_user_head"
+                    android:layout_width="@dimen/dp_52"
+                    android:layout_height="@dimen/dp_52"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:src="@drawable/icon_resume_default_head" />
 
-                <include layout="@layout/layout_resume_career_objective" />
+                <LinearLayout style="@style/ResumeEditMenuStyle">
 
-                <include layout="@layout/layout_resume_education" />
+                    <TextView
+                        style="@style/ResumeEditMenuPromptMustStyle"
+                        android:text="姓         名" />
 
-                <include layout="@layout/layout_resume_job_experience" />
+                    <EditText
+                        android:id="@+id/resume_edit_user_name"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="输入姓名" />
 
-                <include layout="@layout/layout_resume_project_experience" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptMustStyle"
+                        android:text="性         别" />
+
+                    <RadioGroup
+                        android:id="@+id/resume_edit_user_sax"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/radioButton_male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:checked="true"
+                            android:text="男" />
+                        <RadioButton
+                            android:id="@+id/radioButton_female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:checked="false"
+                            android:text="女" />
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptMustStyle"
+                        android:text="年         龄" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_age"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="年龄"
+                        android:inputType="number" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptMustStyle"
+                        android:text="手机号码" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_number"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="您的手机号"
+                        android:inputType="number" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptMustStyle"
+                        android:text="求职状态" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_job_status"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="目前正在找工作" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptMustStyle"
+                        android:text="工作年龄" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_job_age"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入您的工作年龄" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptMustStyle"
+                        android:text="现居地址" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_home_address"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入您的现居地址" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="邮         箱" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_emily"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入您的邮箱" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="证件号" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_card_number"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入您的身份证号" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="户口/国籍" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_nationality"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入您的户口或国籍" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="婚姻状况" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_marriage"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="已婚/未婚" />
+
+                </LinearLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="求职意向"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:divider="@drawable/divider_resume_edit"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10"
+                android:showDividers="middle">
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="职         位" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_intention"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入您要寻找的职位" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="工作地址" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_job_address"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="输入你意向工作的城市" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="薪资范围" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_salary"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入你想要的薪资范围" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="个人标签" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_job_flag"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入你的职能标签,以空格隔开" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="教育经历"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:divider="@drawable/divider_resume_edit"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10"
+                android:showDividers="middle">
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="毕业院校" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_school"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="您的最高学历院校" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="学         历" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_education"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="大专/本科/硕士" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="所修专业" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_discipline"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入你的大学专业" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        android:id="@+id/resume_edit_user_school_start_time"
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:layout_weight="1"
+                        android:text="起始时间" />
+
+                    <TextView
+                        android:id="@+id/resume_edit_user_school_end_time"
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:layout_weight="1"
+                        android:text="结束时间" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="工作经历"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:divider="@drawable/divider_resume_edit"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10"
+                android:showDividers="middle">
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="公司名称" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_company"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入公司名称" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="所处职位" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_position"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="任职公司职位" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        android:id="@+id/resume_edit_user_job_start_time"
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:layout_weight="1"
+                        android:text="起始时间" />
+
+                    <TextView
+                        android:id="@+id/resume_edit_user_job_end_time"
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:layout_weight="1"
+                        android:text="结束时间" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="项目经历"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:divider="@drawable/divider_resume_edit"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10"
+                android:showDividers="middle">
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="项目名称" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_project_name"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入项目名称" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:text="所属公司" />
+
+                    <EditText
+                        android:id="@+id/resume_edit_user_company_name"
+                        style="@style/ResumeEditMenuEditStyle"
+                        android:hint="请输入所属公司" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/resume_edit_user_project_description"
+                    style="@style/ResumeEditMenuEditStyle"
+                    android:layout_height="@dimen/dp_200"
+                    android:background="@drawable/bg_resume_project_description"
+                    android:gravity="left|top"
+                    android:hint="项目描述"
+                    android:padding="@dimen/dp_10" />
+
+                <LinearLayout style="@style/ResumeEditMenuStyle">
+
+                    <TextView
+                        android:id="@+id/resume_edit_user_project_start_time"
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:layout_weight="1"
+                        android:text="起始时间" />
+
+                    <TextView
+                        android:id="@+id/resume_edit_user_project_end_time"
+                        style="@style/ResumeEditMenuPromptStyle"
+                        android:layout_weight="1"
+                        android:text="结束时间" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="@dimen/dp_260"
+                android:layout_height="@dimen/dp_52"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_23"
+                android:layout_marginBottom="@dimen/dp_23"
+                android:background="@drawable/bg_resume_submit_button"
+                android:text="提交"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_16" />
 
         </LinearLayout>
 

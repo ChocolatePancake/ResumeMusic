@@ -90,7 +90,7 @@ public class ResumeFragment extends BaseTitleFragment {
                     if (list != null && !list.isEmpty()) {
                         dataAVObjectList = list;
                     } else {
-                        ToastUtil.show("没有找到哦");
+                        ToastUtil.show("没有搜索到结果哦");
                     }
                 } else {
                     ToastUtil.show("请求异常,请检查网络");

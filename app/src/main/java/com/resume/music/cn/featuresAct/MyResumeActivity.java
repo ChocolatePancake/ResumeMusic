@@ -3,6 +3,7 @@ package com.resume.music.cn.featuresAct;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -67,8 +68,11 @@ public class MyResumeActivity extends BaseTitleActivity {
         smartRefresh = mContentView.findViewById(R.id.smart_refresh_layout);
         resumeRecycler = mContentView.findViewById(R.id.resume_list_recycler);
         resumeAdapter = new ResumeAdapter(R.layout.layout_resume_item);
-        resumeRecycler.setLayoutManager(new LinearLayoutManager(mContext));
+        resumeRecycler.setLayoutManager(new LinearLayoutManager(mContext ,LinearLayoutManager.HORIZONTAL, false));
         resumeRecycler.setAdapter(resumeAdapter);
+
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(resumeRecycler);
 
         smartRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -86,6 +90,7 @@ public class MyResumeActivity extends BaseTitleActivity {
         AVGlobal.getInstance().getAVImpl().requestResume(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
+                smartRefresh.finishRefresh();
                 if (e != null) {
                     ToastUtil.show("请求异常,请检查网络");
                 } else {

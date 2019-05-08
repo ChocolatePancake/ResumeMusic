@@ -11,59 +11,115 @@ import com.avos.avoscloud.SaveCallback;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 
-import tech.com.commoncore.utils.FileUtils;
 import tech.com.commoncore.utils.ToastUtil;
 
 import static tech.com.commoncore.avdb.AVDbManager.*;
 
 public class AVDbImpl implements AVDb {
 
+
     @Override
-    public void addResume(String name, String sex, int age, String address, String number, String email,
-                          String jobStart, String intention, String jobAddress, String salary, String jobFlag, SaveCallback callback) {
+    public void addResume(String head, String name, String sex, int age, String homeAddress, String number,
+                          String email, int jobAge, String jobStatus, String cardNumber, String nationality,
+                          String marriage, String intention, String jobAddress, String salary, String jobFlag,
+                          String school, String discipline, String education, String schoolStartTime,
+                          String schoolEndTime, String company, String position, String jobStartTime,
+                          String jobEndTime, String projectName, String companyName, String projectDescription,
+                          String projectStartTime, String projectEndTime, SaveCallback callback) {
         AVObject avObject = new AVObject(TABLE_RESUME);
         avObject.put(RESUME_USER, AVUser.getCurrentUser().getObjectId());
+        avObject.put(RESUME_HEAD, head);
         avObject.put(RESUME_NAME, name);
         avObject.put(RESUME_SEX, sex);
         avObject.put(RESUME_AGE, age);
-        avObject.put(RESUME_ADDRESS, address);
+        avObject.put(RESUME_HOME_ADDRESS, homeAddress);
         avObject.put(RESUME_NUMBER, number);
         avObject.put(RESUME_E_MAIL, email);
-        avObject.put(RESUME_J_START, jobStart);
+        avObject.put(RESUME_JOB_AGE, jobAge);
+        avObject.put(RESUME_JOB_STATUS, jobStatus);
+        avObject.put(RESUME_CARD_NUMBER, cardNumber);
+        avObject.put(RESUME_NATIONALITY, nationality);
+        avObject.put(RESUME_MARRIAGE, marriage);
+
         avObject.put(RESUME_INTENTION, intention);
-        avObject.put(RESUME_J_ADDRESS, jobAddress);
+        avObject.put(RESUME_JOB_ADDRESS, jobAddress);
         avObject.put(RESUME_SALARY, salary);
-        avObject.put(RESUME_J_FLAG, jobFlag);
+        avObject.put(RESUME_JOB_FLAG, jobFlag);
+
+        avObject.put(RESUME_SCHOOL, school);
+        avObject.put(RESUME_DISCIPLINE, discipline);
+        avObject.put(RESUME_EDUCATION, education);
+        avObject.put(RESUME_SCHOOL_START_TIME, schoolStartTime);
+        avObject.put(RESUME_SCHOOL_END_TIME, schoolEndTime);
+
+        avObject.put(RESUME_COMPANY, company);
+        avObject.put(RESUME_POSITION, position);
+        avObject.put(RESUME_JOB_START_TIME, jobStartTime);
+        avObject.put(RESUME_JOB_END_TIME, jobEndTime);
+
+        avObject.put(RESUME_PROJECT_NAME, projectName);
+        avObject.put(RESUME_COMPANY_NAME, companyName);
+        avObject.put(RESUME_PROJECT_DESCRIPTION, projectDescription);
+        avObject.put(RESUME_PROJECT_START_TIME, projectStartTime);
+        avObject.put(RESUME_PROJECT_END_TIME, projectEndTime);
         avObject.saveInBackground(callback);
     }
 
     @Override
-    public void upDateResume(String resumeId, String name, String sex, int age, String address, String number,
-                             String email, String jobStart, String intention, String jobAddress, String salary, String jobFlag, SaveCallback callback) {
+    public void upDateResume(String resumeId, String head, String name, String sex, int age, String homeAddress,
+                             String number, String email, int jobAge, String jobStatus, String cardNumber,
+                             String nationality, String marriage, String intention, String jobAddress,
+                             String salary, String jobFlag, String school, String discipline, String education,
+                             String schoolStartTime, String schoolEndTime, String company, String position,
+                             String jobStartTime, String jobEndTime, String projectName, String companyName,
+                             String projectDescription, String projectStartTime, String projectEndTime, SaveCallback callback) {
         AVObject avObject = AVObject.createWithoutData(TABLE_RESUME, resumeId);
+        avObject.put(RESUME_HEAD, head);
         avObject.put(RESUME_NAME, name);
         avObject.put(RESUME_SEX, sex);
         avObject.put(RESUME_AGE, age);
-        avObject.put(RESUME_ADDRESS, address);
+        avObject.put(RESUME_HOME_ADDRESS, homeAddress);
         avObject.put(RESUME_NUMBER, number);
         avObject.put(RESUME_E_MAIL, email);
-        avObject.put(RESUME_J_START, jobStart);
+        avObject.put(RESUME_JOB_AGE, jobAge);
+        avObject.put(RESUME_JOB_STATUS, jobStatus);
+        avObject.put(RESUME_CARD_NUMBER, cardNumber);
+        avObject.put(RESUME_NATIONALITY, nationality);
+        avObject.put(RESUME_MARRIAGE, marriage);
+
         avObject.put(RESUME_INTENTION, intention);
-        avObject.put(RESUME_J_ADDRESS, jobAddress);
+        avObject.put(RESUME_JOB_ADDRESS, jobAddress);
         avObject.put(RESUME_SALARY, salary);
-        avObject.put(RESUME_J_FLAG, jobFlag);
+        avObject.put(RESUME_JOB_FLAG, jobFlag);
+
+        avObject.put(RESUME_SCHOOL, school);
+        avObject.put(RESUME_DISCIPLINE, discipline);
+        avObject.put(RESUME_EDUCATION, education);
+        avObject.put(RESUME_SCHOOL_START_TIME, schoolStartTime);
+        avObject.put(RESUME_SCHOOL_END_TIME, schoolEndTime);
+
+        avObject.put(RESUME_COMPANY, company);
+        avObject.put(RESUME_POSITION, position);
+        avObject.put(RESUME_JOB_START_TIME, jobStartTime);
+        avObject.put(RESUME_JOB_END_TIME, jobEndTime);
+
+        avObject.put(RESUME_PROJECT_NAME, projectName);
+        avObject.put(RESUME_COMPANY_NAME, companyName);
+        avObject.put(RESUME_PROJECT_DESCRIPTION, projectDescription);
+        avObject.put(RESUME_PROJECT_START_TIME, projectStartTime);
+        avObject.put(RESUME_PROJECT_END_TIME, projectEndTime);
         avObject.saveInBackground(callback);
     }
 
     @Override
     public void requestResume(FindCallback<AVObject> findCallback) {
-        AVQuery<AVObject> query = new AVQuery<>(RESUME_NAME);
+        AVQuery<AVObject> query = new AVQuery<>(TABLE_RESUME);
         query.findInBackground(findCallback);
     }
 
     @Override
     public void requestResume(String userId, FindCallback<AVObject> findCallback) {
-        AVQuery<AVObject> query = new AVQuery<>(RESUME_NAME);
+        AVQuery<AVObject> query = new AVQuery<>(TABLE_RESUME);
         query.whereEqualTo(RESUME_USER, AVUser.getCurrentUser().getObjectId());
         query.findInBackground(findCallback);
     }

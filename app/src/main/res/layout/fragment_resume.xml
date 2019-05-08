@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
-                android:text="没有数据,请检查网络"
+                android:text="没有搜索到结果哦"
                 android:textColor="#bfbfbf"
                 android:textSize="@dimen/sp_14" />
 

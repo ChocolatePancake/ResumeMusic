@@ -25,7 +25,6 @@ import java.util.List;
 
 import tech.com.commoncore.avdb.AVGlobal;
 import tech.com.commoncore.base.BaseTitleActivity;
-import tech.com.commoncore.manager.ModelPathManager;
 import tech.com.commoncore.utils.ToastUtil;
 import tech.com.commoncore.view.SpaceItemDecoration;
 

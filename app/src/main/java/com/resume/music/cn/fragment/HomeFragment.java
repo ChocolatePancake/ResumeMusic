@@ -90,7 +90,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             }
         });
 
-        ARouter.getInstance().build(main_editPlan).navigation();//TODO 用完记得删
+        ARouter.getInstance().build(main_editResume).navigation();//TODO 用完记得删
         initViewPager();
     }
 
