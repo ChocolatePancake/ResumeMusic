@@ -1,6 +1,7 @@
 package com.resume.music.cn.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -19,15 +20,17 @@ import com.vise.xsnow.event.IEvent;
 import com.vise.xsnow.event.Subscribe;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import pub.devrel.easypermissions.EasyPermissions;
 import tech.com.commoncore.base.BaseActivity;
 import tech.com.commoncore.basecomponent.ServiceFactory;
 import tech.com.commoncore.event.SwitchEvent;
 import tech.com.commoncore.utils.ToastUtil;
 
 @Route(path = "/app/main")
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity{
     public static final String TAG_F_FIRST = "TAG_FIRST_FLAG";
     public static final String TAG_F_SECOND = "TAG_SECOND_FLAG";
     public static final String TAG_F_THIRD = "TAG_THIRD_FLAG";
@@ -260,6 +263,4 @@ public class MainActivity extends BaseActivity {
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
     }
-
-
 }

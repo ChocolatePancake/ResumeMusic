@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.view.View;
 
 /**
  * 对话框工具类, 提供常用对话框显示, 使用support.v7包内的AlertDialog样式
@@ -40,4 +41,14 @@ public class DialogUtils {
                 .setPositiveButton("确定", listener)
                 .show();
     }
+
+    public static AlertDialog.Builder dialogBuilder(Context context, String title, View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        if (view != null) {
+            builder.setView(view);
+        }
+        builder.setTitle(title);
+        return builder;
+    }
+
 }

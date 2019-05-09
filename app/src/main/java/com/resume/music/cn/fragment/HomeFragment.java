@@ -1,17 +1,22 @@
 package com.resume.music.cn.fragment;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.resume.music.cn.R;
 import com.resume.music.cn.adapter.HomeColumnAdapter;
 import com.resume.music.cn.entity.LoopBean;
+import com.vise.utils.view.DialogUtil;
 import com.zhengsr.viewpagerlib.anim.ZoomOutPageTransformer;
 import com.zhengsr.viewpagerlib.bean.PageBean;
 import com.zhengsr.viewpagerlib.callback.PageHelperListener;
@@ -24,6 +29,8 @@ import java.util.List;
 import tech.com.commoncore.base.BaseFragment;
 import tech.com.commoncore.manager.ModelPathManager;
 import tech.com.commoncore.plog;
+import tech.com.commoncore.utils.DialogUtils;
+import tech.com.commoncore.utils.ToastUtil;
 import tech.com.commoncore.view.SpaceItemDecoration;
 
 import static tech.com.commoncore.manager.ModelPathManager.*;
@@ -90,7 +97,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             }
         });
 
-        ARouter.getInstance().build(main_editResume).navigation();//TODO 用完记得删
+
+//        ARouter.getInstance().build(main_recordVideo).navigation();//TODO 用完记得删
         initViewPager();
     }
 

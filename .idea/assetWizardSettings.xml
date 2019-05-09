@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -15,9 +20,9 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="height" value="64" />
-                            <entry key="outputName" value="icon_resume_default_head" />
+                            <entry key="outputName" value="icon_preview_resume" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\admin\Downloads\头像.svg" />
+                            <entry key="sourceFile" value="C:\Users\admin\Downloads\预览.svg" />
                             <entry key="width" value="64" />
                           </map>
                         </option>

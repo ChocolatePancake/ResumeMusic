@@ -17,9 +17,12 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.resume.music.cn.R;
 import com.resume.music.cn.adapter.ResumeAdapter;
+import com.resume.music.cn.bus.ResumeRefreshEvent;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.vise.xsnow.event.Subscribe;
+import com.vise.xsnow.event.inner.ThreadMode;
 
 import java.util.List;
 
@@ -68,7 +71,7 @@ public class MyResumeActivity extends BaseTitleActivity {
         smartRefresh = mContentView.findViewById(R.id.smart_refresh_layout);
         resumeRecycler = mContentView.findViewById(R.id.resume_list_recycler);
         resumeAdapter = new ResumeAdapter(R.layout.layout_resume_item);
-        resumeRecycler.setLayoutManager(new LinearLayoutManager(mContext ,LinearLayoutManager.HORIZONTAL, false));
+        resumeRecycler.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         resumeRecycler.setAdapter(resumeAdapter);
 
         PagerSnapHelper snapHelper = new PagerSnapHelper();
@@ -113,5 +116,10 @@ public class MyResumeActivity extends BaseTitleActivity {
             resumeAdapter.replaceData(dataAVObjectList);
             resumeAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN_THREAD)
+    public void resumeRefreshEvent(ResumeRefreshEvent event) {
+        smartRefresh.autoRefresh();
     }
 }

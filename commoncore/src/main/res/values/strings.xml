@@ -2,6 +2,10 @@
     <string name="lib_app_name">核心库</string>
 
     <string name="determine">确定</string>
-    <string name="tip_photo_permissions_request">图片选择需要以下权限:\n\n1.访问设备上的照片\n\n2.拍照</string>
-    <string name="tip_photo_permissions_denied">您拒绝了「图片选择」所需要的相关权限!</string>
+
+    <string name="tip_photo_permissions_request">图片选择需要以下权限:\n\n1.摄像头\n\n2.拍照</string>
+    <string name="tip_photo_permissions_denied">您拒绝了「设置头像」所需要的相关权限!</string>
+
+    <string name="tip_video_permissions_request">录制视频需要以下权限:\n\n1.访问摄像头和麦克风\n\n2.视频拍摄</string>
+    <string name="tip_video_permissions_denied">您拒绝了「视频拍摄」所需要的相关权限!</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.resume.music.cn.featuresAct;
 
+import android.Manifest;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
@@ -8,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -18,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.resume.music.cn.App;
 import com.resume.music.cn.R;
 
@@ -25,22 +29,29 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
+import tech.com.commoncore.Config;
 import tech.com.commoncore.base.BaseActivity;
+import tech.com.commoncore.utils.ToastUtil;
+import tech.com.commoncore.widget.photoPicker.MyPhotoPickerActivity;
 
 import static tech.com.commoncore.manager.ModelPathManager.main_recordVideo;
+import static tech.com.commoncore.manager.ModelPathManager.main_videoPreview;
 
 @Route(path = main_recordVideo)
-public class RecordVideoActivity extends BaseActivity implements View.OnClickListener {
-
+public class RecordVideoActivity extends BaseActivity implements View.OnClickListener, EasyPermissions.PermissionCallbacks {
+    private static final int PRC_PHOTO_PICKER = 1;
     //UI
     private ImageView mRecordControl;
     private SurfaceView surfaceView;
     private SurfaceHolder mSurfaceHolder;
     private Chronometer mRecordTime;
 
-    //DATA
-    private boolean isPause;     //暂停标识
+    //
+    private boolean isPause;     //暂停标识DATA
     private boolean isRecording; // 标记，判断当前是否正在录制
     private long mRecordCurrentTime = 0;  //录制时间间隔
 
@@ -48,6 +59,9 @@ public class RecordVideoActivity extends BaseActivity implements View.OnClickLis
     private File mVecordFile;
     private Camera mCamera;
     private MediaRecorder mediaRecorder;
+
+    private String filePath;
+    private String recordName;
 
     private MediaRecorder.OnErrorListener onErrorListener = new MediaRecorder.OnErrorListener() {
         @Override
@@ -76,15 +90,25 @@ public class RecordVideoActivity extends BaseActivity implements View.OnClickLis
         mRecordTime = findViewById(R.id.record_time);
         mRecordControl.setOnClickListener(this);
 
-        //配置SurfaceHodler
-        mSurfaceHolder = surfaceView.getHolder();
-        // 设置Surface不需要维护自己的缓冲区
-        mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        // 设置分辨率
-        mSurfaceHolder.setFixedSize(320, 280);
-        // 设置该组件不会让屏幕自动关闭
-        mSurfaceHolder.setKeepScreenOn(true);
-        mSurfaceHolder.addCallback(mCallBack); //相机创建回调接口
+        initControlResource();
+    }
+
+    @AfterPermissionGranted(PRC_PHOTO_PICKER)
+    private void initControlResource() {
+        String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            //配置SurfaceHodler
+            mSurfaceHolder = surfaceView.getHolder();
+            // 设置Surface不需要维护自己的缓冲区
+            mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+            // 设置分辨率
+            mSurfaceHolder.setFixedSize(320, 280);
+            // 设置该组件不会让屏幕自动关闭
+            mSurfaceHolder.setKeepScreenOn(true);
+            mSurfaceHolder.addCallback(mCallBack); //相机创建回调接口
+        } else {
+            EasyPermissions.requestPermissions(this, getString(R.string.tip_video_permissions_request), PRC_PHOTO_PICKER, perms);
+        }
     }
 
     private SurfaceHolder.Callback mCallBack = new SurfaceHolder.Callback() {
@@ -232,6 +256,7 @@ public class RecordVideoActivity extends BaseActivity implements View.OnClickLis
             mRecordControl.setEnabled(true);
 //            mPauseRecord.setEnabled(false);
             isRecording = false;
+            toVideoPreview(filePath, recordName);
         }
     }
 
@@ -243,14 +268,23 @@ public class RecordVideoActivity extends BaseActivity implements View.OnClickLis
             Toast.makeText(this, "请查看您的SD卡是否存在！", Toast.LENGTH_SHORT).show();
             return false;
         }
+        filePath = App.getInstance().getExternalFilesDir(null).getPath();
 
-        File sampleDir = new File(App.getInstance().getExternalFilesDir(null).getPath(), "Record");
+        File sampleDir = new File(filePath);
         if (!sampleDir.exists()) {
             sampleDir.mkdirs();
         }
-        String recordName = "VID_" + new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + ".mp4";
+        recordName = "VID_" + new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + ".mp4";
         mVecordFile = new File(sampleDir, recordName);
         return true;
+    }
+
+    private void toVideoPreview(String path, String name) {
+        ARouter.getInstance().build(main_videoPreview)
+                .withString("videoPath", path)
+                .withString("videoName", name)
+                .navigation();
+        finish();
     }
 
     /**
@@ -291,9 +325,27 @@ public class RecordVideoActivity extends BaseActivity implements View.OnClickLis
         //设置选择角度，顺时针方向，因为默认是逆向90度的，这样图像就是正常显示了,这里设置的是观看保存后的视频的角度
         mediaRecorder.setOrientationHint(90);
         //设置录像的分辨率
-        mediaRecorder.setVideoSize(640, 480);
+        mediaRecorder.setVideoSize(320, 240);
 
         mediaRecorder.setOutputFile(mVecordFile.getAbsolutePath());
 
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        if (requestCode == PRC_PHOTO_PICKER) {
+            ToastUtil.show(R.string.tip_video_permissions_denied);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 }

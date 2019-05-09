@@ -50,7 +50,7 @@
         <activity android:name=".featuresAct.ResumeDetailsActivity" />
         <activity android:name=".featuresAct.VideoListActivity" />
         <activity android:name=".featuresAct.PlanListActivity" />
-        <activity android:name=".featuresAct.VideoPlayActivity" />
+        <activity android:name=".featuresAct.VideoPreviewActivity" />
     </application>
 
 </manifest>
